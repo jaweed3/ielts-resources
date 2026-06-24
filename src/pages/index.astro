@@ -1,0 +1,76 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const sections = [
+  { name: "Listening", sub: "55 audio test &middot; 22 article tips", count: 77, href: "/listening" },
+  { name: "Reading", sub: "41 articles", count: 41, href: "/reading" },
+  { name: "Writing", sub: "64 articles", count: 64, href: "/writing" },
+  { name: "Speaking", sub: "36 articles", count: 36, href: "/speaking" },
+  { name: "Grammar", sub: "30 articles", count: 30, href: "/grammar" },
+  { name: "Vocabulary", sub: "20 articles", count: 20, href: "/vocabulary" },
+];
+const totalFiles = sections.reduce((s, sec) => s + sec.count, 0);
+---
+
+<BaseLayout title="Dashboard" activeTab="beranda">
+  <div class="mb-6">
+    <h1 class="font-heading text-2xl font-bold text-foreground">IELTS Student Resources</h1>
+    <p class="mt-1 font-mono text-sm text-muted-foreground">Offline fallback archive &mdash; {totalFiles} files across 6 sections</p>
+  </div>
+
+  <div class="mb-6 rounded-xl border border-border bg-card p-5 shadow-sm">
+    <div class="flex flex-wrap items-center justify-between gap-4">
+      <div>
+        <p class="font-heading text-sm font-semibold text-foreground">Total Archive</p>
+        <p class="mt-0.5 font-mono text-xs text-muted-foreground">55 audio tests &middot; 213 articles</p>
+      </div>
+      <div class="inline-flex flex-col items-center justify-center rounded-lg border-[3px] border-blue-800 px-4 py-2 font-stamp uppercase tracking-wider text-blue-800 shadow-[inset_0_0_0_1px_currentColor] saturate-105" style="transform:rotate(-4deg)">
+        <span class="text-[11px] leading-tight">FALLBACK</span>
+        <span class="text-lg leading-tight">{totalFiles} FILES</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="mb-6 rounded-xl border-l-4 border-l-amber-500 bg-amber-50/50 px-5 py-3 shadow-sm">
+    <p class="font-mono text-xs leading-relaxed text-amber-800">
+      <strong>Not the main site.</strong> This is a static fallback archive &mdash; use it when
+      the primary IELTS learning sites are down or if you need offline copies of the resources.
+      All materials are mirrored from IELTS Fever and ieltsonlinetests.com.
+    </p>
+  </div>
+
+  <div class="rounded-xl border border-border bg-card shadow-sm">
+    <div class="border-b border-border/50 px-5 py-3">
+      <h2 class="font-heading text-sm font-semibold text-foreground">Sections</h2>
+    </div>
+    <div class="divide-y divide-border/50">
+      {sections.map((s) => (
+        <a href={s.href} class="flex items-center justify-between gap-4 px-5 py-3.5 transition-colors hover:bg-muted">
+          <div class="min-w-0">
+            <span class="font-heading text-sm font-semibold text-foreground">{s.name}</span>
+            <p class="mt-0.5 font-mono text-xs text-muted-foreground" set:html={s.sub}></p>
+          </div>
+          <span class="shrink-0 font-mono text-xs text-foreground/60">{s.count} files</span>
+        </a>
+      ))}
+    </div>
+  </div>
+
+  <div class="mt-6 rounded-xl border-l-4 border-l-blue-500 bg-card px-5 py-3 shadow-sm">
+    <p class="font-mono text-xs text-muted-foreground">
+      Archive: 55 audio tests + 213 articles from IELTS Fever &amp; ieltsonlinetests.com.
+    </p>
+  </div>
+
+  <div class="mt-6 rounded-xl border-2 border-dashed border-emerald-300 bg-emerald-50/30 px-5 py-4 shadow-sm">
+    <div class="flex flex-wrap items-center justify-between gap-3">
+      <div>
+        <p class="font-heading text-sm font-semibold text-foreground">Download Offline</p>
+        <p class="mt-0.5 font-mono text-xs text-muted-foreground">Full static site — no server needed, works offline</p>
+      </div>
+      <a href="/ielts-student-resources-offline.zip" download class="inline-flex h-9 items-center rounded-lg bg-emerald-600 px-4 font-mono text-xs font-medium text-white transition-colors hover:bg-emerald-700">
+        Download (.zip)
+      </a>
+    </div>
+  </div>
+</BaseLayout>
