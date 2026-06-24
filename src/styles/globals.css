@@ -1,0 +1,69 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 40 33% 88%;
+    --foreground: 222 47% 11%;
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+    --primary: 222 47% 20%;
+    --primary-foreground: 40 33% 88%;
+    --secondary: 40 34% 79%;
+    --secondary-foreground: 222 47% 11%;
+    --muted: 40 20% 92%;
+    --muted-foreground: 222 10% 40%;
+    --accent: 35 85% 55%;
+    --accent-foreground: 222 47% 11%;
+    --destructive: 0 65% 50%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 40 15% 76%;
+    --input: 40 15% 76%;
+    --ring: 222 47% 20%;
+    --radius: 0.5rem;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+
+  html {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  @media (hover: hover) {
+    .hover\:bg-background\/60:hover {
+      background-color: hsl(var(--background) / 0.6);
+    }
+    .hover\:bg-muted:hover {
+      background-color: hsl(var(--muted));
+    }
+  }
+
+  .prose {
+    font-size: 1.0625rem;
+    line-height: 1.75;
+  }
+
+  .prose p {
+    margin-top: 1.25em;
+    margin-bottom: 1.25em;
+  }
+
+  .prose h2 {
+    font-size: 1.375rem;
+    margin-top: 1.75em;
+  }
+
+  .prose h3 {
+    font-size: 1.125rem;
+    margin-top: 1.5em;
+  }
+}
