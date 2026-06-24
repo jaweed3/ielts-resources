@@ -1,0 +1,20 @@
+{
+  "name": "ielts-student-resources",
+  "type": "module",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "astro dev",
+    "prebuild": "rm -f public/audio",
+    "build": "astro build && node scripts/zip-offline.mjs",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "@astrojs/tailwind": "^6.0.2",
+    "@tailwindcss/typography": "^0.5.20",
+    "@tailwindcss/vite": "^4.3.1",
+    "archiver": "^8.0.0",
+    "astro": "^5.0.0",
+    "markdown-it": "^14.2.0",
+    "tailwindcss": "^3.4.19"
+  }
+}
