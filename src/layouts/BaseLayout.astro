@@ -1,0 +1,198 @@
+---
+import "@/styles/globals.css";
+
+export interface Props {
+  title: string;
+  description?: string;
+  activeTab?: string;
+}
+
+const { title, description = "IELTS resource hub for mahasiswa", activeTab = "beranda" } = Astro.props;
+
+const ICONS: Record<string, string> = {
+  beranda: "M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6",
+  listening: "M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3",
+  reading: "M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253",
+  writing: "M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z",
+  speaking: "M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z",
+  grammar: "M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z",
+  vocabulary: "M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2zM22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z",
+  about: "M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z",
+};
+
+const SIDEBAR_TABS = [
+  { key: "beranda", label: "Beranda", href: "/" },
+  { key: "listening", label: "Listening", href: "/listening" },
+  { key: "reading", label: "Reading", href: "/reading" },
+  { key: "writing", label: "Writing", href: "/writing" },
+  { key: "speaking", label: "Speaking", href: "/speaking" },
+  { key: "grammar", label: "Grammar", href: "/grammar" },
+  { key: "vocabulary", label: "Vocabulary", href: "/vocabulary" },
+  { key: "about", label: "About", href: "/about" },
+];
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title} | IELTS Student Resources</title>
+    <meta name="description" content={description} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Special+Elite&display=swap" rel="stylesheet" />
+    <style>
+      .sidebar-mount { display: contents; }
+    </style>
+  </head>
+  <body class="min-h-screen antialiased">
+    <div class="flex min-h-screen">
+      <!-- Desktop sidebar -->
+      <aside class="hidden border-r border-border bg-secondary lg:flex lg:w-60 lg:flex-col">
+        <div class="flex h-14 items-center gap-2 border-b border-border px-4">
+          <span class="font-mono text-xs font-semibold uppercase tracking-wider text-muted-foreground">IELTS</span>
+          <span class="text-xs text-border">/</span>
+          <span class="font-heading text-sm font-semibold text-foreground">Student Resources</span>
+        </div>
+        <nav class="flex-1 space-y-0.5 p-2">
+          {SIDEBAR_TABS.map((tab) => (
+            <a
+              href={tab.href}
+              class={`flex items-center gap-2.5 rounded-lg px-3 py-2 text-sm font-medium transition-colors ${
+                activeTab === tab.key
+                  ? "bg-background text-foreground shadow-sm"
+                  : "text-muted-foreground hover:bg-background/60 hover:text-foreground"
+              }`}
+              aria-current={activeTab === tab.key ? "page" : undefined}
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="shrink-0"><path d={ICONS[tab.key]} /></svg>
+              {tab.label}
+            </a>
+          ))}
+        </nav>
+        <div class="border-t border-border p-3">
+          <p class="font-mono text-[10px] text-muted-foreground">IELTS Student Resources</p>
+          <a href="mailto:wedjaw22@gmail.com" class="font-mono text-[10px] text-muted-foreground underline underline-offset-2 transition-colors hover:text-foreground">wedjaw22@gmail.com</a>
+        </div>
+      </aside>
+
+      <!-- Main -->
+      <div class="flex flex-1 flex-col">
+        <!-- Mobile header -->
+        <header class="sticky top-0 z-40 flex h-14 items-center gap-3 border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 lg:hidden">
+          <button id="mobile-menu-btn" class="ml-3 inline-flex items-center justify-center rounded-md p-3 text-muted-foreground hover:bg-secondary hover:text-foreground" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-sidebar">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+          </button>
+          <span class="font-heading text-sm font-semibold text-foreground">IELTS Student Resources</span>
+        </header>
+
+        <!-- Progress bar -->
+        <div id="progress-bar" class="h-0.5 bg-blue-600 transition-all duration-100" style="width:0%"></div>
+
+        <!-- Mobile sidebar overlay -->
+        <div id="mobile-overlay" class="fixed inset-0 z-30 hidden bg-black/20"></div>
+
+        <!-- Mobile sidebar panel -->
+        <aside id="mobile-sidebar" class="fixed inset-y-0 left-0 z-40 w-60 -translate-x-full border-r border-border bg-secondary shadow-lg transition-transform duration-200 ease-in-out lg:hidden" role="dialog" aria-modal="true" aria-label="Navigation">
+          <div class="flex h-14 items-center gap-2 border-b border-border px-4">
+            <span class="font-mono text-xs font-semibold uppercase tracking-wider text-muted-foreground">IELTS</span>
+            <span class="text-xs text-border">/</span>
+            <span class="font-heading text-sm font-semibold text-foreground">Student Resources</span>
+          </div>
+          <nav class="space-y-0.5 p-2">
+            {SIDEBAR_TABS.map((tab) => (
+              <a
+                href={tab.href}
+                class={`flex items-center gap-2.5 rounded-lg px-3 py-3 text-sm font-medium transition-colors ${
+                  activeTab === tab.key
+                    ? "bg-background text-foreground shadow-sm"
+                    : "text-muted-foreground hover:bg-background/60 hover:text-foreground"
+                }`}
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="shrink-0"><path d={ICONS[tab.key]} /></svg>
+                {tab.label}
+              </a>
+            ))}
+          </nav>
+        </aside>
+
+        <!-- Content -->
+        <main class="flex-1 px-4 py-6 sm:px-6 lg:px-8 lg:py-8">
+          <div class="mx-auto max-w-5xl">
+            <slot />
+          </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="border-t border-border px-4 py-4 sm:px-6 lg:px-8">
+          <div class="mx-auto max-w-5xl">
+            <p class="text-center font-mono text-[11px] text-muted-foreground">
+              &copy; {new Date().getFullYear()} IELTS Student Resources &mdash; <a href="mailto:wedjaw22@gmail.com" class="underline underline-offset-2 transition-colors hover:text-foreground">wedjaw22@gmail.com</a>
+            </p>
+          </div>
+        </footer>
+      </div>
+    </div>
+
+    <script>
+      const btn = document.getElementById("mobile-menu-btn");
+      const sidebar = document.getElementById("mobile-sidebar");
+      const overlay = document.getElementById("mobile-overlay");
+      const scrollBar = document.getElementById("progress-bar");
+
+      function lockScroll() {
+        document.body.style.overflow = "hidden";
+        document.body.style.position = "fixed";
+        document.body.style.width = "100%";
+        document.body.style.top = `-${window.scrollY}px`;
+      }
+
+      function unlockScroll() {
+        const scrollY = parseInt(document.body.style.top || "0") * -1;
+        document.body.style.overflow = "";
+        document.body.style.position = "";
+        document.body.style.width = "";
+        document.body.style.top = "";
+        window.scrollTo(0, scrollY);
+      }
+
+      if (btn && sidebar && overlay) {
+        function open() {
+          sidebar.classList.remove("-translate-x-full");
+          overlay.classList.remove("hidden");
+          lockScroll();
+          btn.setAttribute("aria-expanded", "true");
+          btn.setAttribute("aria-label", "Close menu");
+        }
+        function close() {
+          sidebar.classList.add("-translate-x-full");
+          overlay.classList.add("hidden");
+          unlockScroll();
+          btn.setAttribute("aria-expanded", "false");
+          btn.setAttribute("aria-label", "Open menu");
+          btn.focus();
+        }
+        btn.addEventListener("click", () => {
+          const open = !sidebar.classList.contains("-translate-x-full");
+          open ? close() : open();
+        });
+        overlay.addEventListener("click", close);
+        document.addEventListener("keydown", (e) => { if (e.key === "Escape") close(); });
+        document.querySelectorAll("#mobile-sidebar nav a").forEach(a => a.addEventListener("click", close));
+      }
+
+      if (scrollBar) {
+        function updateProgress() {
+          const scrollTop = window.scrollY;
+          const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+          const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+          scrollBar.style.width = pct + "%";
+        }
+        window.addEventListener("scroll", updateProgress, { passive: true });
+        window.addEventListener("resize", updateProgress, { passive: true });
+        updateProgress();
+      }
+    </script>
+  </body>
+</html>
