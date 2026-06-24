@@ -1,0 +1,117 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const tests = Array.from({ length: 55 }, (_, i) => {
+  const n = i + 1;
+  const num = String(n).padStart(2, "0");
+  return { num, title: `IELTS Listening Practice Test ${n}`, slug: `test-${num}` };
+});
+const PER_PAGE = 10;
+const totalPages = Math.ceil(tests.length / PER_PAGE);
+---
+
+<BaseLayout title="Listening" activeTab="listening">
+  <div class="mb-6">
+    <h1 class="font-heading text-2xl font-bold text-foreground">Listening</h1>
+    <p class="mt-1 font-mono text-sm text-muted-foreground">
+      55 practice tests &middot; 22 articles &middot; IELTS Fever + ieltsonlinetests.com
+    </p>
+  </div>
+
+  <div class="mb-6 flex items-center gap-2">
+    <a href="/listening" class="inline-flex items-center rounded-lg bg-primary px-4 py-2 font-mono text-xs font-medium uppercase tracking-wider text-primary-foreground transition-colors hover:bg-primary/80">Audio Tests</a>
+    <a href="/listening/tips" class="inline-flex items-center rounded-lg border border-border bg-card px-4 py-2 font-mono text-xs font-medium uppercase tracking-wider text-muted-foreground transition-colors hover:bg-muted">Tips</a>
+  </div>
+
+  <div class="rounded-xl border border-border bg-card shadow-sm">
+    <div class="flex flex-wrap items-center justify-between gap-3 border-b border-border/50 px-5 py-3">
+      <div class="font-mono text-xs text-muted-foreground">
+        Showing <span id="showing-label">1-{Math.min(PER_PAGE, tests.length)}</span> of <strong class="text-foreground/80">{tests.length}</strong> tests
+      </div>
+      <input
+        id="search-input"
+        type="search"
+        placeholder="Search tests..."
+        class="h-8 w-48 rounded-md border border-border bg-muted px-3 font-mono text-xs text-foreground/80 placeholder:text-muted-foreground/70 focus:border-blue-400 focus:outline-none focus:ring-1 focus:ring-blue-400"
+        aria-label="Search listening tests"
+      />
+    </div>
+
+    <div id="test-list" class="divide-y divide-border/50">
+      {tests.map((t) => (
+        <div class="test-item flex items-center justify-between gap-4 px-5 py-3.5 transition-colors hover:bg-muted" data-title={t.title.toLowerCase()} style="display:none">
+          <div class="min-w-0 flex-1">
+            <a href={`/listening/${t.slug}`} class="font-heading text-sm font-semibold text-foreground transition-colors hover:text-foreground/80">IELTS Listening Practice Test {t.num}</a>
+            <div class="mt-0.5 flex items-center gap-2">
+              <span class="inline-flex items-center rounded-md bg-blue-50 px-2 py-0.5 font-mono text-xs font-medium text-blue-700">listening</span>
+              <span class="font-mono text-[10px] text-muted-foreground/70">ieltsfever.org</span>
+            </div>
+          </div>
+          <div class="flex shrink-0 items-center gap-1">
+            <a href={`/listening/${t.slug}`} class="inline-flex h-7 items-center rounded-md bg-primary px-3 font-mono text-[11px] font-medium text-primary-foreground transition-colors hover:bg-primary/80">Open</a>
+            <a href={`/audio/ielts-fever/test-${t.num}.mp3`} download class="inline-flex h-7 items-center rounded-md border border-emerald-200 px-2.5 font-mono text-[11px] font-medium text-emerald-700 transition-colors hover:bg-emerald-50">MP3</a>
+            <a href={`/audio/ielts-fever/test-${t.num}.pdf`} download class="inline-flex h-7 items-center rounded-md border border-red-200 px-2.5 font-mono text-[11px] font-medium text-red-700 transition-colors hover:bg-red-50">PDF</a>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <div id="empty-result" class="hidden px-5 py-12 text-center">
+      <p class="font-mono text-sm text-muted-foreground/70">No tests match your search.</p>
+    </div>
+
+    <div id="pagination" class="flex items-center justify-center gap-1.5 border-t border-border/50 px-5 py-3">
+      {Array.from({ length: totalPages }, (_, i) => (
+        <button class="page-btn inline-flex h-7 w-7 items-center justify-center rounded-md font-mono text-xs transition-colors" data-page={i + 1} style={i === 0 ? "background:#1C2B4A;color:#fff" : "color:#8B8060;border:1px solid #DCD2B8"}>{i + 1}</button>
+      ))}
+    </div>
+  </div>
+
+  <script>
+    const PER_PAGE = 10;
+    const items = document.querySelectorAll(".test-item");
+    const pages = document.querySelectorAll(".page-btn");
+    const searchInput = document.getElementById("search-input");
+    const showingLabel = document.getElementById("showing-label");
+    const emptyResult = document.getElementById("empty-result");
+    let currentPage = 1;
+    let filtered = [];
+
+    function getFiltered() {
+      const q = searchInput?.value?.toLowerCase().trim() || "";
+      return Array.from(items).filter(el => !q || el.dataset.title.includes(q));
+    }
+
+    function render() {
+      filtered = getFiltered();
+      if (filtered.length === 0) {
+        items.forEach(el => el.style.display = "none");
+        pages.forEach(p => p.style.display = "none");
+        if (emptyResult) emptyResult.classList.remove("hidden");
+        if (showingLabel) showingLabel.textContent = "0";
+        return;
+      }
+      if (emptyResult) emptyResult.classList.add("hidden");
+      pages.forEach(p => p.style.display = "");
+      const totalPages = Math.ceil(filtered.length / PER_PAGE);
+      if (currentPage > totalPages) currentPage = totalPages;
+      const start = (currentPage - 1) * PER_PAGE;
+      const end = Math.min(start + PER_PAGE, filtered.length);
+      items.forEach(el => el.style.display = "none");
+      filtered.forEach((el, i) => { el.style.display = i >= start && i < end ? "" : "none"; });
+      if (showingLabel) showingLabel.textContent = `${start + 1}-${end}`;
+      pages.forEach((btn, i) => {
+        const p = i + 1;
+        btn.style.display = p <= totalPages ? "inline-flex" : "none";
+        const active = p === currentPage;
+        btn.style.background = active ? "#1C2B4A" : "#fff";
+        btn.style.color = active ? "#fff" : "#8B8060";
+        btn.style.borderColor = active ? "#1C2B4A" : "#DCD2B8";
+      });
+    }
+
+    pages.forEach(btn => btn.addEventListener("click", () => { currentPage = parseInt(btn.dataset.page); render(); }));
+    if (searchInput) searchInput.addEventListener("input", () => { currentPage = 1; render(); });
+    render();
+  </script>
+</BaseLayout>
