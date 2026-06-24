@@ -6,3 +6,11 @@ public/audio/
 .env
 *.local
 .DS_Store
+.astro/
+components.json
+download.log
+download_progress.json
+download_resources.py
+preview.html
+resource_inventory.log
+theme-reference/
