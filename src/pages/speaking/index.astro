@@ -1,0 +1,164 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import fs from "fs";
+import path from "path";
+
+function getSpeakingType(slug: string, title: string): string {
+  const s = slug + " " + title.toLowerCase();
+  if (/part-1|part.?1\b|analysis.*band/i.test(s) && !/part-2|part-3|part.?2|part.?3/i.test(s)) return "part-1";
+  if (/cue.?card|part-2|part.?2|task-2|task.?2/i.test(s)) return "part-2";
+  if (/part-3|part.?3|task-3|task.?3|follow.?up/i.test(s)) return "part-3";
+  if (/vocabulary|vocab/i.test(s)) return "vocabulary";
+  return "general";
+}
+
+const SPEAKING_TYPES = ["all", "part-1", "part-2", "part-3", "vocabulary", "general"];
+const SPEAKING_LABELS: Record<string, string> = {
+  all: "All", "part-1": "Part 1", "part-2": "Part 2", "part-3": "Part 3", vocabulary: "Vocabulary", general: "General",
+};
+const SPEAKING_COLORS: Record<string, string> = {
+  "part-1": "bg-blue-50 text-blue-700", "part-2": "bg-amber-50 text-amber-700",
+  "part-3": "bg-purple-50 text-purple-700", vocabulary: "bg-emerald-50 text-emerald-700",
+  general: "bg-muted text-muted-foreground",
+};
+
+const articlesDir = path.join(process.cwd(), "downloaded_resources", "ielts", "speaking-tips");
+const articleFiles = fs.readdirSync(articlesDir).filter(f => f.endsWith(".md")).sort();
+
+const articles = articleFiles.map((file) => {
+  const slug = file.replace(/\.md$/, "");
+  const content = fs.readFileSync(path.join(articlesDir, file), "utf-8");
+  const titleMatch = content.match(/^#\s+(.+)/m);
+  const sourceMatch = content.match(/^source:\s+(.+)/m);
+  const title = titleMatch ? titleMatch[1].trim() : slug.replace(/-/g, " ");
+  const cleanTitle = title.replace(/^IELTS\s+/i, "");
+  const source = sourceMatch ? sourceMatch[1].trim() : "#";
+  return { slug, title: cleanTitle || title, source, type: getSpeakingType(slug, title) };
+});
+
+const PER_PAGE = 10;
+const totalPages = Math.ceil(articles.length / PER_PAGE);
+---
+
+<BaseLayout title="Speaking" activeTab="speaking">
+  <div class="mb-6">
+    <h1 class="font-heading text-2xl font-bold text-foreground">Speaking</h1>
+    <p class="mt-1 font-mono text-sm text-muted-foreground">{articles.length} tip articles &middot; ieltsonlinetests.com</p>
+  </div>
+
+  <div class="rounded-xl border border-border bg-card shadow-sm">
+    <div class="flex flex-wrap items-center justify-between gap-3 border-b border-border/50 px-5 py-3">
+      <div class="font-mono text-xs text-muted-foreground">
+        Showing <span id="showing-label">1-{Math.min(PER_PAGE, articles.length)}</span> of <strong class="text-foreground/80">{articles.length}</strong> articles
+      </div>
+      <input
+        id="search-input"
+        type="search"
+        placeholder="Search articles..."
+        class="h-8 w-48 rounded-md border border-border bg-muted px-3 font-mono text-xs text-foreground/80 placeholder:text-muted-foreground/70 focus:border-blue-400 focus:outline-none focus:ring-1 focus:ring-blue-400"
+        aria-label="Search speaking articles"
+      />
+    </div>
+
+    <div class="flex items-center gap-1.5 border-b border-border/50 px-5 py-2">
+      {SPEAKING_TYPES.map((t) => (
+        <button class="type-filter inline-flex h-7 items-center rounded-md px-3 font-mono text-[11px] font-medium transition-colors" data-type={t} style={t === "all" ? "background:#1C2B4A;color:#fff" : "color:#8B8060;border:1px solid #DCD2B8;background:#fff"}>
+          {SPEAKING_LABELS[t]}
+        </button>
+      ))}
+    </div>
+
+    <div id="article-list" class="divide-y divide-border/50">
+      {articles.map((a) => (
+        <div class="article-item flex items-center justify-between gap-4 px-5 py-3.5 transition-colors hover:bg-muted" data-title={a.title.toLowerCase() + " " + a.slug.replace(/-/g, " ")} data-type={a.type} style="display:none">
+          <div class="min-w-0 flex-1">
+            <a href={`/speaking/article/${a.slug}`} class="font-heading text-sm font-semibold text-foreground transition-colors hover:text-foreground/80">{a.title}</a>
+            <div class="mt-0.5 flex items-center gap-2">
+              <span class="inline-flex items-center rounded-md bg-purple-50 px-2 py-0.5 font-mono text-xs font-medium text-purple-700">speaking</span>
+              <span class="font-mono text-[10px] text-muted-foreground/70">ieltsonlinetests.com</span>
+            </div>
+          </div>
+          <div class="flex shrink-0 items-center gap-1">
+            <a href={`/speaking/article/${a.slug}`} class="inline-flex h-7 items-center rounded-md bg-primary px-3 font-mono text-[11px] font-medium text-primary-foreground transition-colors hover:bg-primary/80">Read</a>
+            <a href={a.source} target="_blank" rel="noopener" class="inline-flex h-7 items-center rounded-md border border-border px-2.5 font-mono text-[11px] text-muted-foreground transition-colors hover:bg-muted">Source</a>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <div id="empty-result" class="hidden px-5 py-12 text-center">
+      <p class="font-mono text-sm text-muted-foreground/70">No articles match your search.</p>
+    </div>
+
+    <div id="pagination" class="flex items-center justify-center gap-1.5 border-t border-border/50 px-5 py-3">
+      {Array.from({ length: totalPages }, (_, i) => (
+        <button class="page-btn inline-flex h-7 w-7 items-center justify-center rounded-md font-mono text-xs transition-colors" data-page={i + 1} style={i === 0 ? "background:#1C2B4A;color:#fff" : "color:#8B8060;border:1px solid #DCD2B8"}>{i + 1}</button>
+      ))}
+    </div>
+  </div>
+
+  <script>
+    const PER_PAGE = 10;
+    const items = document.querySelectorAll(".article-item");
+    const pages = document.querySelectorAll(".page-btn");
+    const searchInput = document.getElementById("search-input");
+    const showingLabel = document.getElementById("showing-label");
+    const emptyResult = document.getElementById("empty-result");
+    const typeBtns = document.querySelectorAll(".type-filter");
+    let currentPage = 1;
+    let activeType = "all";
+    let filtered = [];
+
+    function getFiltered() {
+      const q = searchInput?.value?.toLowerCase().trim() || "";
+      return Array.from(items).filter(el => {
+        const matchSearch = !q || el.dataset.title.includes(q);
+        const matchType = activeType === "all" || el.dataset.type === activeType;
+        return matchSearch && matchType;
+      });
+    }
+
+    function render() {
+      filtered = getFiltered();
+      if (filtered.length === 0) {
+        items.forEach(el => el.style.display = "none");
+        pages.forEach(p => p.style.display = "none");
+        if (emptyResult) emptyResult.classList.remove("hidden");
+        if (showingLabel) showingLabel.textContent = "0";
+        return;
+      }
+      if (emptyResult) emptyResult.classList.add("hidden");
+      pages.forEach(p => p.style.display = "");
+      const totalPages = Math.ceil(filtered.length / PER_PAGE);
+      if (currentPage > totalPages) currentPage = totalPages;
+      const start = (currentPage - 1) * PER_PAGE;
+      const end = Math.min(start + PER_PAGE, filtered.length);
+      items.forEach(el => el.style.display = "none");
+      filtered.forEach((el, i) => { el.style.display = i >= start && i < end ? "" : "none"; });
+      if (showingLabel) showingLabel.textContent = `${start + 1}-${end}`;
+      pages.forEach((btn, i) => {
+        const p = i + 1;
+        btn.style.display = p <= totalPages ? "inline-flex" : "none";
+        const active = p === currentPage;
+        btn.style.background = active ? "#1C2B4A" : "#fff";
+        btn.style.color = active ? "#fff" : "#8B8060";
+        btn.style.borderColor = active ? "#1C2B4A" : "#DCD2B8";
+      });
+    }
+
+    pages.forEach(btn => btn.addEventListener("click", () => { currentPage = parseInt(btn.dataset.page); render(); }));
+    if (searchInput) searchInput.addEventListener("input", () => { currentPage = 1; render(); });
+    typeBtns.forEach(btn => btn.addEventListener("click", () => {
+      activeType = btn.dataset.type;
+      typeBtns.forEach(b => {
+        const a = b.dataset.type === activeType;
+        b.style.background = a ? "#1C2B4A" : "#fff";
+        b.style.color = a ? "#fff" : "#8B8060";
+        b.style.borderColor = a ? "#1C2B4A" : "#DCD2B8";
+      });
+      currentPage = 1;
+      render();
+    }));
+    render();
+  </script>
+</BaseLayout>
