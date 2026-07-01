@@ -15,7 +15,7 @@ export async function getStaticPaths() {
 const { testNum, testNumber } = Astro.props;
 const prevNum = testNumber > 1 ? String(testNumber - 1).padStart(2, "0") : null;
 const nextNum = testNumber < 55 ? String(testNumber + 1).padStart(2, "0") : null;
-const AUDIO_BASE = "https://pub-e7b9ba14cdaf45d191ecd09c45065812.r2.dev";
+const AUDIO_BASE = import.meta.env.PUBLIC_AUDIO_BASE_URL || "https://pub-e7b9ba14cdaf45d191ecd09c45065812.r2.dev";
 ---
 
 <BaseLayout title={`Test ${testNumber}`} description={`IELTS Listening Practice Test ${testNumber}`}>
