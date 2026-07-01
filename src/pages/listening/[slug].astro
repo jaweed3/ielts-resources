@@ -15,6 +15,7 @@ export async function getStaticPaths() {
 const { testNum, testNumber } = Astro.props;
 const prevNum = testNumber > 1 ? String(testNumber - 1).padStart(2, "0") : null;
 const nextNum = testNumber < 55 ? String(testNumber + 1).padStart(2, "0") : null;
+const AUDIO_BASE = "https://pub-e7b9ba14cdaf45d191ecd09c45065812.r2.dev";
 ---
 
 <BaseLayout title={`Test ${testNumber}`} description={`IELTS Listening Practice Test ${testNumber}`}>
@@ -36,18 +37,18 @@ const nextNum = testNumber < 55 ? String(testNumber + 1).padStart(2, "0") : null
           Audio Player
         </h2>
         <div class="flex gap-2">
-          <a href={`/audio/ielts-fever/test-${testNum}.mp3`} download class="px-4 py-2 rounded-full bg-surface-container text-on-surface-variant border border-outline-variant/20 hover:bg-surface-variant/40 transition-all text-label-sm font-bold flex items-center gap-1">
+          <a href={`${AUDIO_BASE}/test-${testNum}.mp3`} download class="px-4 py-2 rounded-full bg-surface-container text-on-surface-variant border border-outline-variant/20 hover:bg-surface-variant/40 transition-all text-label-sm font-bold flex items-center gap-1">
             <span class="material-symbols-outlined text-sm">download</span>
             MP3
           </a>
-          <a href={`/audio/ielts-fever/test-${testNum}.pdf`} download class="px-4 py-2 rounded-full bg-surface-container text-on-surface-variant border border-outline-variant/20 hover:bg-surface-variant/40 transition-all text-label-sm font-bold flex items-center gap-1">
+          <a href={`${AUDIO_BASE}/test-${testNum}.pdf`} download class="px-4 py-2 rounded-full bg-surface-container text-on-surface-variant border border-outline-variant/20 hover:bg-surface-variant/40 transition-all text-label-sm font-bold flex items-center gap-1">
             <span class="material-symbols-outlined text-sm">download</span>
             PDF
           </a>
         </div>
       </div>
       <audio controls preload="none" id="audio-player" class="w-full rounded-full" style="height:44px">
-        <source src={`/audio/ielts-fever/test-${testNum}.mp3`} type="audio/mpeg" />
+        <source src={`${AUDIO_BASE}/test-${testNum}.mp3`} type="audio/mpeg" />
       </audio>
     </div>
 
@@ -57,7 +58,7 @@ const nextNum = testNumber < 55 ? String(testNumber + 1).padStart(2, "0") : null
         <span class="material-symbols-outlined text-primary">description</span>
         Answer Key (PDF)
       </h2>
-      <embed src={`/audio/ielts-fever/test-${testNum}.pdf`} type="application/pdf" class="h-[400px] w-full rounded-xl border border-outline-variant/10 sm:h-[500px]" />
+      <embed src={`${AUDIO_BASE}/test-${testNum}.pdf`} type="application/pdf" class="h-[400px] w-full rounded-xl border border-outline-variant/10 sm:h-[500px]" />
     </div>
 
     <!-- Navigation -->
