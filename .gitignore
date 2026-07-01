@@ -14,3 +14,9 @@ download_resources.py
 preview.html
 resource_inventory.log
 theme-reference/
+
+# wrangler files
+.wrangler
+.dev.vars*
+!.dev.vars.example
+!.env.example
