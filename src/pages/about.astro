@@ -3,66 +3,84 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
 <BaseLayout title="About" activeTab="about">
-  <div class="mb-6">
-    <h1 class="font-heading text-2xl font-bold text-foreground">About</h1>
-    <p class="mt-1 font-mono text-sm text-muted-foreground">IELTS Student Resources</p>
+  <div class="mb-10">
+    <h2 class="font-heading text-3xl md:text-4xl lg:text-display-lg text-on-surface mb-2 tracking-tight">About</h2>
+    <p class="text-on-surface-variant text-body-lg max-w-2xl">IELTS Student Resources — fallback archive for uninterrupted study.</p>
   </div>
 
-  <div class="space-y-6">
-    <section class="rounded-xl border border-border bg-card p-6 shadow-sm">
-      <h2 class="font-heading text-base font-semibold text-foreground">Purpose</h2>
-      <p class="mt-2 font-body text-sm leading-relaxed text-muted-foreground">
-        <strong>IELTS Student Resources</strong> is a <strong>fallback archive</strong>.
-        It is <em>not</em> the primary learning site. Use it when:
+  <div class="space-y-6 max-w-3xl">
+    <section class="glass-card p-8 rounded-xl">
+      <h3 class="font-heading text-2xl font-bold text-on-surface mb-4 flex items-center gap-3">
+        <span class="material-symbols-outlined text-primary">info</span>
+        Purpose
+      </h3>
+      <p class="text-on-surface-variant text-body-md leading-relaxed">
+        <strong class="text-on-surface">IELTS Student Resources</strong> is a <strong class="text-on-surface">fallback archive</strong>.
+        It is <em>not</em> the primary learning site. Use it when the main IELTS learning sites are down or
+        if you need offline copies of articles and audio for studying without internet.
       </p>
-      <ul class="mt-2 list-disc space-y-1 pl-5 font-body text-sm leading-relaxed text-muted-foreground">
-        <li>The main IELTS learning sites are down or inaccessible.</li>
-        <li>You need offline copies of articles and audio for studying without internet.</li>
-        <li>You want a lightweight, fast-loading alternative to browse IELTS materials.</li>
+      <ul class="mt-4 space-y-2">
+        <li class="flex items-start gap-3 text-on-surface-variant text-body-md">
+          <span class="material-symbols-outlined text-primary text-sm mt-0.5">cloud_off</span>
+          <span>Primary sites are down or inaccessible</span>
+        </li>
+        <li class="flex items-start gap-3 text-on-surface-variant text-body-md">
+          <span class="material-symbols-outlined text-primary text-sm mt-0.5">file_download</span>
+          <span>Need offline copies for studying without internet</span>
+        </li>
+        <li class="flex items-start gap-3 text-on-surface-variant text-body-md">
+          <span class="material-symbols-outlined text-primary text-sm mt-0.5">bolt</span>
+          <span>Want a lightweight, fast-loading alternative to browse materials</span>
+        </li>
       </ul>
-      <p class="mt-3 font-body text-sm leading-relaxed text-muted-foreground">
-        All materials are sourced from <a href="https://ieltsonlinetests.com" target="_blank" rel="noopener" class="text-foreground underline underline-offset-2">ieltsonlinetests.com</a>
-        and <a href="https://ieltsfever.org" target="_blank" rel="noopener" class="text-foreground underline underline-offset-2">IELTS Fever</a>.
-        This archive provides offline copies so students can keep studying even
-        with limited internet connectivity.
-      </p>
     </section>
 
-    <section class="rounded-xl border border-border bg-card p-6 shadow-sm">
-      <h2 class="font-heading text-base font-semibold text-foreground">Archive Contents</h2>
-      <div class="mt-3 overflow-x-auto">
-        <table class="w-full font-mono text-xs">
+    <section class="glass-card p-8 rounded-xl">
+      <h3 class="font-heading text-2xl font-bold text-on-surface mb-4 flex items-center gap-3">
+        <span class="material-symbols-outlined text-primary">inventory_2</span>
+        Archive Contents
+      </h3>
+      <div class="overflow-x-auto">
+        <table class="w-full text-sm">
           <thead>
-            <tr class="border-b border-border">
-              <th class="px-2 py-1.5 text-left font-medium text-muted-foreground">Category</th>
-              <th class="px-2 py-1.5 text-left font-medium text-muted-foreground">Files</th>
-              <th class="px-2 py-1.5 text-left font-medium text-muted-foreground">Source</th>
+            <tr class="border-b border-outline-variant/20">
+              <th class="px-3 py-2 text-left text-label-sm text-on-surface-variant font-bold">Category</th>
+              <th class="px-3 py-2 text-left text-label-sm text-on-surface-variant font-bold">Files</th>
+              <th class="px-3 py-2 text-left text-label-sm text-on-surface-variant font-bold">Source</th>
             </tr>
           </thead>
           <tbody>
-            <tr class="border-b border-border/50"><td class="px-2 py-1.5">Listening Practice Tests</td><td class="px-2 py-1.5">55 MP3 + 30 PDF</td><td class="px-2 py-1.5">IELTS Fever</td></tr>
-            <tr class="border-b border-border/50"><td class="px-2 py-1.5">Listening Tips</td><td class="px-2 py-1.5">22 articles</td><td class="px-2 py-1.5">ieltsonlinetests.com</td></tr>
-            <tr class="border-b border-border/50"><td class="px-2 py-1.5">Reading Tips</td><td class="px-2 py-1.5">41 articles</td><td class="px-2 py-1.5">ieltsonlinetests.com</td></tr>
-            <tr><td class="px-2 py-1.5">Writing Tips</td><td class="px-2 py-1.5">64 articles</td><td class="px-2 py-1.5">ieltsonlinetests.com</td></tr>
+            <tr class="border-b border-outline-variant/10"><td class="px-3 py-2 text-on-surface">Listening Practice Tests</td><td class="px-3 py-2 text-on-surface-variant">55 MP3 + 30 PDF</td><td class="px-3 py-2 text-on-surface-variant">IELTS Fever</td></tr>
+            <tr class="border-b border-outline-variant/10"><td class="px-3 py-2 text-on-surface">Listening Tips</td><td class="px-3 py-2 text-on-surface-variant">22 articles</td><td class="px-3 py-2 text-on-surface-variant">ieltsonlinetests.com</td></tr>
+            <tr class="border-b border-outline-variant/10"><td class="px-3 py-2 text-on-surface">Reading Tips</td><td class="px-3 py-2 text-on-surface-variant">41 articles</td><td class="px-3 py-2 text-on-surface-variant">ieltsonlinetests.com</td></tr>
+            <tr class="border-b border-outline-variant/10"><td class="px-3 py-2 text-on-surface">Writing Tips</td><td class="px-3 py-2 text-on-surface-variant">64 articles</td><td class="px-3 py-2 text-on-surface-variant">ieltsonlinetests.com</td></tr>
+            <tr class="border-b border-outline-variant/10"><td class="px-3 py-2 text-on-surface">Speaking Tips</td><td class="px-3 py-2 text-on-surface-variant">36 articles</td><td class="px-3 py-2 text-on-surface-variant">ieltsonlinetests.com</td></tr>
+            <tr class="border-b border-outline-variant/10"><td class="px-3 py-2 text-on-surface">Grammar</td><td class="px-3 py-2 text-on-surface-variant">30 articles</td><td class="px-3 py-2 text-on-surface-variant">ieltsonlinetests.com</td></tr>
+            <tr><td class="px-3 py-2 text-on-surface">Vocabulary</td><td class="px-3 py-2 text-on-surface-variant">20 articles</td><td class="px-3 py-2 text-on-surface-variant">ieltsonlinetests.com</td></tr>
           </tbody>
         </table>
       </div>
-      <p class="mt-3 font-mono text-xs text-muted-foreground/70">Speaking, Grammar, Vocabulary — in progress</p>
     </section>
 
-    <section class="rounded-xl border border-border bg-card p-6 shadow-sm">
-      <h2 class="font-heading text-base font-semibold text-foreground">Technical</h2>
-      <div class="mt-3 space-y-1 font-mono text-xs text-muted-foreground">
-        <p>Framework: Astro (static site)</p>
-        <p>Styling: Tailwind CSS</p>
-        <p>Fonts: Inter, JetBrains Mono, Special Elite</p>
-        <p>Status: MVP &mdash; 278 static pages</p>
+    <section class="glass-card p-8 rounded-xl">
+      <h3 class="font-heading text-2xl font-bold text-on-surface mb-4 flex items-center gap-3">
+        <span class="material-symbols-outlined text-primary">terminal</span>
+        Technical
+      </h3>
+      <div class="space-y-2 text-on-surface-variant text-body-md">
+        <p><span class="text-primary">Framework:</span> Astro (static site)</p>
+        <p><span class="text-primary">Styling:</span> Tailwind CSS</p>
+        <p><span class="text-primary">Fonts:</span> Bricolage Grotesque, Inter, JetBrains Mono, Special Elite</p>
+        <p><span class="text-primary">Status:</span> MVP — 278 static pages</p>
       </div>
     </section>
 
-    <section class="rounded-xl border border-border bg-card p-6 shadow-sm">
-      <h2 class="font-heading text-base font-semibold text-foreground">Disclaimer</h2>
-      <div class="mt-3 rounded-lg border-l-4 border-l-blue-500 bg-muted px-4 py-3 font-mono text-xs leading-relaxed text-muted-foreground">
+    <section class="glass-card p-8 rounded-xl">
+      <h3 class="font-heading text-2xl font-bold text-on-surface mb-4 flex items-center gap-3">
+        <span class="material-symbols-outlined text-primary">gavel</span>
+        Disclaimer
+      </h3>
+      <div class="p-4 rounded-xl bg-surface-container-low border border-outline-variant/10 text-on-surface-variant text-body-md leading-relaxed">
         This site is a personal archive for educational purposes. All copyrights remain
         with the original owners (IELTS Fever and ieltsonlinetests.com). If you are a
         copyright holder and object to any material displayed, please contact us for
@@ -70,13 +88,19 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       </div>
     </section>
 
-    <section class="rounded-xl border border-border bg-card p-6 text-center shadow-sm">
-      <h2 class="font-heading text-base font-semibold text-foreground">Contact</h2>
-      <p class="mt-1 font-mono text-sm text-muted-foreground">Suggestions, criticism, or feedback?</p>
-      <a href="mailto:wedjaw22@gmail.com" class="mt-2 inline-block font-mono text-sm text-foreground underline underline-offset-2">wedjaw22@gmail.com</a>
-      <div class="mt-4 inline-flex flex-col items-center justify-center rounded-lg border-[3px] border-blue-800 px-4 py-2 font-stamp uppercase tracking-wider text-blue-800 shadow-[inset_0_0_0_1px_currentColor]" style="transform:rotate(-2deg)">
-        <span class="text-[11px] leading-tight">STATUS</span>
-        <span class="text-base leading-tight">READY TO USE</span>
+    <section class="glass-card p-8 rounded-xl text-center">
+      <h3 class="font-heading text-2xl font-bold text-on-surface mb-2 flex items-center justify-center gap-3">
+        <span class="material-symbols-outlined text-primary">mail</span>
+        Contact
+      </h3>
+      <p class="text-on-surface-variant text-body-md mb-4">Suggestions, criticism, or feedback?</p>
+      <a href="mailto:wedjaw22@gmail.com" class="inline-flex items-center gap-2 px-6 py-3 bg-primary text-on-primary font-bold rounded-full hover:bg-primary/90 transition-all text-sm">
+        <span class="material-symbols-outlined">send</span>
+        wedjaw22@gmail.com
+      </a>
+      <div class="mt-8 fallback-stamp inline-flex flex-col items-center p-4 rounded-xl">
+        <span class="text-primary/40 font-heading font-bold text-lg tracking-widest uppercase">STATUS</span>
+        <span class="text-on-surface-variant text-sm font-medium">READY TO USE</span>
       </div>
     </section>
   </div>

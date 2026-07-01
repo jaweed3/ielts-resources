@@ -4,13 +4,16 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
 <BaseLayout title="404 Not Found">
   <div class="flex flex-col items-center justify-center py-20 text-center">
-    <p class="font-stamp text-8xl font-bold text-muted-foreground/30">404</p>
-    <h1 class="mt-4 font-heading text-2xl font-bold text-foreground">Berkas Tidak Ditemukan</h1>
-    <p class="mt-2 font-mono text-sm text-muted-foreground">The file you're looking for is not in this dossier.</p>
-    <div class="mt-8 inline-flex flex-col items-center justify-center rounded-lg border-[3px] border-dashed border-muted-foreground/30 px-4 py-2 font-stamp uppercase tracking-wider text-muted-foreground/30 opacity-50" style="transform:rotate(-4deg)">
-      <span class="text-[11px] leading-tight">STATUS</span>
-      <span class="text-lg leading-tight">TIDAK DITEMUKAN</span>
+    <span class="material-symbols-outlined text-8xl text-on-surface-variant/20">folder_off</span>
+    <h1 class="mt-4 font-heading text-4xl md:text-5xl font-bold text-on-surface tracking-tight">404</h1>
+    <p class="mt-2 text-on-surface-variant text-body-lg">The file you're looking for is not in this archive.</p>
+    <div class="mt-6 fallback-stamp inline-flex flex-col items-center p-4 rounded-xl">
+      <span class="text-primary/40 font-heading font-bold text-lg tracking-widest uppercase">NOT FOUND</span>
+      <span class="text-on-surface-variant text-sm font-medium">TIDAK DITEMUKAN</span>
     </div>
-    <a href="/" class="mt-8 inline-flex h-10 items-center rounded-lg bg-primary px-6 font-mono text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/80">Back to Dashboard</a>
+    <a href="/" class="mt-8 inline-flex items-center gap-2 px-6 py-3 bg-primary text-on-primary font-bold rounded-full hover:bg-primary/90 transition-all text-sm active:scale-95">
+      <span class="material-symbols-outlined">dashboard</span>
+      Back to Dashboard
+    </a>
   </div>
 </BaseLayout>

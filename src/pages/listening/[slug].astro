@@ -18,50 +18,78 @@ const nextNum = testNumber < 55 ? String(testNumber + 1).padStart(2, "0") : null
 ---
 
 <BaseLayout title={`Test ${testNumber}`} description={`IELTS Listening Practice Test ${testNumber}`}>
-  <div class="mb-6">
-    <div class="flex items-center gap-2 text-sm text-muted-foreground">
-      <a href="/listening" class="font-mono text-xs transition-colors hover:text-foreground">&larr; Back to tests</a>
-    </div>
-    <h1 class="mt-2 font-heading text-2xl font-bold text-foreground">IELTS Listening Test {testNumber}</h1>
-    <p class="mt-1 font-mono text-sm text-muted-foreground">~30 minutes &middot; 4 sections &middot; 40 questions</p>
+  <div class="mb-8">
+    <a href="/listening" class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-surface-container text-on-surface-variant text-label-sm font-bold hover:bg-surface-variant/40 transition-all mb-6">
+      <span class="material-symbols-outlined text-sm">arrow_back</span>
+      Back to Tests
+    </a>
+    <h1 class="font-heading text-3xl md:text-4xl font-bold text-on-surface tracking-tight">IELTS Listening Test {testNumber}</h1>
+    <p class="text-on-surface-variant text-body-md mt-2">~30 minutes &middot; 4 sections &middot; 40 questions</p>
   </div>
 
   <div class="space-y-6">
     <!-- Audio + Download -->
-    <div class="rounded-xl border border-border bg-card p-5 shadow-sm">
-      <div class="mb-3 flex items-center justify-between">
-        <h2 class="font-heading text-sm font-semibold text-foreground">Audio Player</h2>
-        <div class="flex items-center gap-1.5">
-          <a href={`/audio/ielts-fever/test-${testNum}.mp3`} download class="inline-flex h-7 items-center rounded-md border border-emerald-200 px-2.5 font-mono text-[11px] font-medium text-emerald-700 transition-colors hover:bg-emerald-50">MP3</a>
-          <a href={`/audio/ielts-fever/test-${testNum}.pdf`} download class="inline-flex h-7 items-center rounded-md border border-red-200 px-2.5 font-mono text-[11px] font-medium text-red-700 transition-colors hover:bg-red-50">PDF</a>
+    <div class="glass-card rounded-xl p-6 md:p-8">
+      <div class="flex items-center justify-between mb-5">
+        <h2 class="font-heading text-xl font-bold text-on-surface flex items-center gap-2">
+          <span class="material-symbols-outlined text-primary">headphones</span>
+          Audio Player
+        </h2>
+        <div class="flex gap-2">
+          <a href={`/audio/ielts-fever/test-${testNum}.mp3`} download class="px-4 py-2 rounded-full bg-surface-container text-on-surface-variant border border-outline-variant/20 hover:bg-surface-variant/40 transition-all text-label-sm font-bold flex items-center gap-1">
+            <span class="material-symbols-outlined text-sm">download</span>
+            MP3
+          </a>
+          <a href={`/audio/ielts-fever/test-${testNum}.pdf`} download class="px-4 py-2 rounded-full bg-surface-container text-on-surface-variant border border-outline-variant/20 hover:bg-surface-variant/40 transition-all text-label-sm font-bold flex items-center gap-1">
+            <span class="material-symbols-outlined text-sm">download</span>
+            PDF
+          </a>
         </div>
       </div>
-      <audio controls preload="none" id="audio-player" class="w-full" style="height:36px">
+      <audio controls preload="none" id="audio-player" class="w-full rounded-full" style="height:44px">
         <source src={`/audio/ielts-fever/test-${testNum}.mp3`} type="audio/mpeg" />
       </audio>
     </div>
 
     <!-- PDF Preview -->
-    <div class="rounded-xl border border-border bg-card p-5 shadow-sm">
-      <h2 class="mb-3 font-heading text-sm font-semibold text-foreground">Answer Key (PDF)</h2>
-      <embed src={`/audio/ielts-fever/test-${testNum}.pdf`} type="application/pdf" class="h-[400px] w-full rounded-lg border border-border sm:h-[500px]" />
+    <div class="glass-card rounded-xl p-6 md:p-8">
+      <h2 class="font-heading text-xl font-bold text-on-surface mb-5 flex items-center gap-2">
+        <span class="material-symbols-outlined text-primary">description</span>
+        Answer Key (PDF)
+      </h2>
+      <embed src={`/audio/ielts-fever/test-${testNum}.pdf`} type="application/pdf" class="h-[400px] w-full rounded-xl border border-outline-variant/10 sm:h-[500px]" />
     </div>
 
     <!-- Navigation -->
     <div class="flex items-center justify-between gap-4">
       <div>
         {prevNum ? (
-          <a href={`/listening/test-${prevNum}`} class="inline-flex h-8 items-center rounded-lg border border-border bg-card px-3 font-mono text-xs text-muted-foreground transition-colors hover:bg-muted">&larr; Test {parseInt(prevNum)}</a>
+          <a href={`/listening/test-${prevNum}`} class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-surface-container text-on-surface-variant border border-outline-variant/20 hover:bg-surface-variant/40 transition-all text-label-sm font-bold">
+            <span class="material-symbols-outlined text-sm">chevron_left</span>
+            Test {parseInt(prevNum)}
+          </a>
         ) : (
-          <span class="inline-flex h-8 items-center rounded-lg border border-border bg-muted px-3 font-mono text-xs text-muted-foreground/50">&larr; Previous</span>
+          <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-surface-container text-on-surface-variant/40 border border-outline-variant/10 text-label-sm font-bold cursor-not-allowed">
+            <span class="material-symbols-outlined text-sm">chevron_left</span>
+            Previous
+          </span>
         )}
       </div>
-      <a href="/listening" class="inline-flex h-8 items-center rounded-lg bg-primary px-4 font-mono text-xs font-medium text-primary-foreground transition-colors hover:bg-primary/80">All Tests</a>
+      <a href="/listening" class="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-primary text-on-primary font-bold hover:bg-primary/90 transition-all text-label-sm">
+        <span class="material-symbols-outlined text-sm">apps</span>
+        All Tests
+      </a>
       <div>
         {nextNum ? (
-          <a href={`/listening/test-${nextNum}`} class="inline-flex h-8 items-center rounded-lg border border-border bg-card px-3 font-mono text-xs text-muted-foreground transition-colors hover:bg-muted">Test {parseInt(nextNum)} &rarr;</a>
+          <a href={`/listening/test-${nextNum}`} class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-surface-container text-on-surface-variant border border-outline-variant/20 hover:bg-surface-variant/40 transition-all text-label-sm font-bold">
+            Test {parseInt(nextNum)}
+            <span class="material-symbols-outlined text-sm">chevron_right</span>
+          </a>
         ) : (
-          <span class="inline-flex h-8 items-center rounded-lg border border-border bg-muted px-3 font-mono text-xs text-muted-foreground/50">Next &rarr;</span>
+          <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-surface-container text-on-surface-variant/40 border border-outline-variant/10 text-label-sm font-bold cursor-not-allowed">
+            Next
+            <span class="material-symbols-outlined text-sm">chevron_right</span>
+          </span>
         )}
       </div>
     </div>

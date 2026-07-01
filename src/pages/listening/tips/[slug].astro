@@ -24,16 +24,31 @@ const html = md.render(content);
 ---
 
 <BaseLayout title={title} description={`${title} — IELTS Listening article`}>
-  <div class="mb-6">
-    <a href="/listening/tips" class="font-mono text-xs text-muted-foreground transition-colors hover:text-foreground">&larr; Back to Listening Tips</a>
-    <h1 class="mt-2 font-heading text-2xl font-bold text-foreground">{title}</h1>
-    <div class="mt-2 flex items-center gap-2">
-      <span class="inline-flex items-center rounded-md bg-blue-50 px-2 py-0.5 font-mono text-xs font-medium text-blue-700">listening</span>
-      <a href={source} target="_blank" rel="noopener" class="font-mono text-xs text-muted-foreground underline underline-offset-2 transition-colors hover:text-foreground">View source &rarr;</a>
+  <div class="mb-8">
+    <a href="/listening/tips" class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-surface-container text-on-surface-variant text-label-sm font-bold hover:bg-surface-variant/40 transition-all mb-6">
+      <span class="material-symbols-outlined text-sm">arrow_back</span>
+      Back to Listening Tips
+    </a>
+    <div class="flex items-center gap-3 mb-4">
+      <span class="px-3 py-1 rounded-full bg-secondary-container/30 text-secondary text-[10px] font-bold uppercase tracking-wider">Listening</span>
     </div>
+    <h1 class="font-heading text-3xl md:text-4xl font-bold text-on-surface tracking-tight">{title}</h1>
   </div>
 
-  <article class="prose prose-headings:font-heading prose-headings:font-bold prose-a:text-foreground prose-a:underline prose-a:decoration-foreground/30 prose-a:underline-offset-2 hover:prose-a:decoration-foreground prose-pre:bg-secondary prose-pre:text-foreground prose-code:font-mono prose-code:text-sm prose-img:rounded-lg break-words rounded-xl border border-border bg-card p-6 shadow-sm sm:p-8">
+  <article class="prose max-w-none break-words glass-card rounded-xl p-6 md:p-8 mb-8">
     <Fragment set:html={html} />
   </article>
+
+  <div class="flex items-center justify-between">
+    <a href="/listening/tips" class="inline-flex items-center gap-2 text-primary font-bold text-label-sm hover:underline underline-offset-4">
+      <span class="material-symbols-outlined text-sm">arrow_back</span>
+      All Listening Tips
+    </a>
+    {source && source !== "#" && (
+      <a href={source} target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-on-surface-variant text-label-sm font-medium hover:text-primary transition-colors">
+        View source
+        <span class="material-symbols-outlined text-sm">open_in_new</span>
+      </a>
+    )}
+  </div>
 </BaseLayout>

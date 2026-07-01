@@ -2,75 +2,95 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 
 const sections = [
-  { name: "Listening", sub: "55 audio test &middot; 22 article tips", count: 77, href: "/listening" },
-  { name: "Reading", sub: "41 articles", count: 41, href: "/reading" },
-  { name: "Writing", sub: "64 articles", count: 64, href: "/writing" },
-  { name: "Speaking", sub: "36 articles", count: 36, href: "/speaking" },
-  { name: "Grammar", sub: "30 articles", count: 30, href: "/grammar" },
-  { name: "Vocabulary", sub: "20 articles", count: 20, href: "/vocabulary" },
+  { name: "Listening", sub: "55 audio-tests, 22 articles", icon: "hearing", href: "/listening" },
+  { name: "Reading", sub: "41 articles", icon: "menu_book", href: "/reading" },
+  { name: "Writing", sub: "64 articles", icon: "edit_note", href: "/writing" },
+  { name: "Speaking", sub: "36 articles", icon: "record_voice_over", href: "/speaking" },
+  { name: "Grammar", sub: "30 articles", icon: "spellcheck", href: "/grammar" },
+  { name: "Vocabulary", sub: "20 articles", icon: "dictionary", href: "/vocabulary" },
 ];
-const totalFiles = sections.reduce((s, sec) => s + sec.count, 0);
+const totalFiles = sections.reduce((s, sec) => s + parseInt(sec.sub.match(/\d+/)?.[0] || "0"), 0);
+const totalArticles = sections.reduce((s, sec) => {
+  const match = sec.sub.match(/(\d+)\s*articles?/);
+  return s + (match ? parseInt(match[1]) : 0);
+}, 0);
 ---
 
 <BaseLayout title="Dashboard" activeTab="beranda">
-  <div class="mb-6">
-    <h1 class="font-heading text-2xl font-bold text-foreground">IELTS Student Resources</h1>
-    <p class="mt-1 font-mono text-sm text-muted-foreground">Offline fallback archive &mdash; {totalFiles} files across 6 sections</p>
-  </div>
-
-  <div class="mb-6 rounded-xl border border-border bg-card p-5 shadow-sm">
-    <div class="flex flex-wrap items-center justify-between gap-4">
-      <div>
-        <p class="font-heading text-sm font-semibold text-foreground">Total Archive</p>
-        <p class="mt-0.5 font-mono text-xs text-muted-foreground">55 audio tests &middot; 213 articles</p>
-      </div>
-      <div class="inline-flex flex-col items-center justify-center rounded-lg border-[3px] border-blue-800 px-4 py-2 font-stamp uppercase tracking-wider text-blue-800 shadow-[inset_0_0_0_1px_currentColor] saturate-105" style="transform:rotate(-4deg)">
-        <span class="text-[11px] leading-tight">FALLBACK</span>
-        <span class="text-lg leading-tight">{totalFiles} FILES</span>
-      </div>
+  <!-- Hero Header -->
+  <div class="mb-10 flex flex-col md:flex-row justify-between items-start md:items-end gap-6">
+    <div>
+      <h2 class="font-heading text-3xl md:text-4xl lg:text-5xl font-bold text-primary mb-2 tracking-tight">IELTS Archive</h2>
+      <p class="text-on-surface-variant text-body-lg max-w-lg">Your offline fallback archive for IELTS preparation materials.</p>
+    </div>
+    <div class="fallback-stamp p-4 rounded-xl shrink-0">
+      <div class="text-primary/40 font-heading font-bold text-xl md:text-2xl tracking-widest uppercase">FALLBACK</div>
+      <div class="text-on-surface-variant text-sm font-medium text-center">OFFLINE ARCHIVE</div>
     </div>
   </div>
 
-  <div class="mb-6 rounded-xl border-l-4 border-l-amber-500 bg-amber-50/50 px-5 py-3 shadow-sm">
-    <p class="font-mono text-xs leading-relaxed text-amber-800">
-      <strong>Not the main site.</strong> This is a static fallback archive &mdash; use it when
-      the primary IELTS learning sites are down or if you need offline copies of the resources.
-      All materials are mirrored from IELTS Fever and ieltsonlinetests.com.
-    </p>
-  </div>
-
-  <div class="rounded-xl border border-border bg-card shadow-sm">
-    <div class="border-b border-border/50 px-5 py-3">
-      <h2 class="font-heading text-sm font-semibold text-foreground">Sections</h2>
-    </div>
-    <div class="divide-y divide-border/50">
-      {sections.map((s) => (
-        <a href={s.href} class="flex items-center justify-between gap-4 px-5 py-3.5 transition-colors hover:bg-muted">
-          <div class="min-w-0">
-            <span class="font-heading text-sm font-semibold text-foreground">{s.name}</span>
-            <p class="mt-0.5 font-mono text-xs text-muted-foreground" set:html={s.sub}></p>
-          </div>
-          <span class="shrink-0 font-mono text-xs text-foreground/60">{s.count} files</span>
-        </a>
-      ))}
+  <!-- Fallback notice -->
+  <div class="mb-10 p-5 rounded-xl bg-surface-container-low border border-outline-variant/10 flex items-start gap-4">
+    <span class="material-symbols-outlined text-primary shrink-0 mt-0.5">info</span>
+    <div>
+      <p class="font-heading font-bold text-on-surface text-sm">Not the main site</p>
+      <p class="text-on-surface-variant text-sm mt-1">This is a static fallback archive &mdash; use it when the primary IELTS learning sites are down or if you need offline copies of the resources. All materials are mirrored from IELTS Fever and ieltsonlinetests.com.</p>
     </div>
   </div>
 
-  <div class="mt-6 rounded-xl border-l-4 border-l-blue-500 bg-card px-5 py-3 shadow-sm">
-    <p class="font-mono text-xs text-muted-foreground">
-      Archive: 55 audio tests + 213 articles from IELTS Fever &amp; ieltsonlinetests.com.
-    </p>
-  </div>
-
-  <div class="mt-6 rounded-xl border-2 border-dashed border-emerald-300 bg-emerald-50/30 px-5 py-4 shadow-sm">
-    <div class="flex flex-wrap items-center justify-between gap-3">
-      <div>
-        <p class="font-heading text-sm font-semibold text-foreground">Download Offline</p>
-        <p class="mt-0.5 font-mono text-xs text-muted-foreground">Full static site — no server needed, works offline</p>
-      </div>
-      <a href="/ielts-student-resources-offline.zip" download class="inline-flex h-9 items-center rounded-lg bg-emerald-600 px-4 font-mono text-xs font-medium text-white transition-colors hover:bg-emerald-700">
-        Download (.zip)
+  <!-- Bento Grid of Modules -->
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
+    {sections.map((s) => (
+      <a href={s.href} class="glass-card p-6 md:p-8 rounded-xl relative group cursor-pointer overflow-hidden block">
+        <div class="absolute -right-4 -top-4 opacity-5 group-hover:opacity-10 transition-opacity">
+          <span class="material-symbols-outlined text-[100px] md:text-[120px]">{s.icon}</span>
+        </div>
+        <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-5 border border-primary/20">
+          <span class="material-symbols-outlined text-primary" style="font-variation-settings:'FILL'1">{s.icon}</span>
+        </div>
+        <h3 class="font-heading text-xl md:text-2xl font-bold text-on-surface mb-2">{s.name}</h3>
+        <p class="text-on-surface-variant text-body-md">{s.sub}</p>
       </a>
-    </div>
+    ))}
   </div>
+
+  <!-- Archive Stats Section -->
+  <section class="mt-14 relative p-8 md:p-10 rounded-xl overflow-hidden border border-outline-variant/10">
+    <div class="reading-lamp-bg absolute inset-0 opacity-50"></div>
+    <div class="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+      <div>
+        <span class="inline-block px-3 py-1 rounded-full bg-secondary-container/30 text-secondary text-label-sm font-bold mb-4">Archive Status</span>
+        <h3 class="font-heading text-3xl md:text-4xl font-bold text-on-surface mb-4">Offline Resource Archive</h3>
+        <p class="text-on-surface-variant text-body-lg mb-6">{totalFiles} audio tests &middot; {totalArticles} articles across 6 categories, available entirely offline.</p>
+        <div class="flex items-center gap-3 text-sm text-on-surface-variant">
+          <span class="material-symbols-outlined text-primary">check_circle</span>
+          <span>Last synced: static build</span>
+        </div>
+      </div>
+      <div class="relative h-48 md:h-56 rounded-xl overflow-hidden group bg-surface-container-high flex items-center justify-center">
+        <div class="text-center p-6">
+          <span class="material-symbols-outlined text-6xl text-primary/20 block mb-4">auto_stories</span>
+          <p class="font-heading text-2xl font-bold text-primary">{totalFiles + totalArticles}</p>
+          <p class="text-on-surface-variant text-sm">Total Resources</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Offline Download Section -->
+  <section class="mt-10 bg-surface-container-low p-6 md:p-8 rounded-xl border border-outline-variant/20 flex flex-col md:flex-row items-center justify-between gap-6">
+    <div class="flex items-center gap-5">
+      <div class="w-14 h-14 rounded-full bg-secondary-container flex items-center justify-center shrink-0">
+        <span class="material-symbols-outlined text-3xl text-on-secondary-container">cloud_download</span>
+      </div>
+      <div>
+        <h4 class="font-heading text-xl md:text-2xl font-bold text-on-surface">Offline Archive Access</h4>
+        <p class="text-on-surface-variant text-sm md:text-base">Download the full archive for uninterrupted study without internet.</p>
+      </div>
+    </div>
+    <a href="/ielts-student-resources-offline.zip" download class="px-6 py-3 bg-primary text-on-primary font-bold rounded-full hover:bg-primary/90 transition-all flex items-center gap-2 text-sm shrink-0 active:scale-95">
+      <span class="material-symbols-outlined" style="font-variation-settings:'FILL'1">download_done</span>
+      Download (.zip)
+    </a>
+  </section>
 </BaseLayout>

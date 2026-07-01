@@ -4,52 +4,85 @@
 
 @layer base {
   :root {
-    --background: 40 33% 88%;
-    --foreground: 222 47% 11%;
-    --card: 0 0% 100%;
-    --card-foreground: 222 47% 11%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 222 47% 11%;
-    --primary: 222 47% 20%;
-    --primary-foreground: 40 33% 88%;
-    --secondary: 40 34% 79%;
-    --secondary-foreground: 222 47% 11%;
-    --muted: 40 20% 92%;
-    --muted-foreground: 222 10% 40%;
-    --accent: 35 85% 55%;
-    --accent-foreground: 222 47% 11%;
-    --destructive: 0 65% 50%;
-    --destructive-foreground: 0 0% 100%;
-    --border: 40 15% 76%;
-    --input: 40 15% 76%;
-    --ring: 222 47% 20%;
-    --radius: 0.5rem;
+    color-scheme: dark;
   }
 
   * {
-    @apply border-border;
+    @apply border-outline-variant/20;
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-on-background font-body antialiased overflow-x-hidden;
   }
 
   html {
     -webkit-tap-highlight-color: transparent;
   }
 
-  @media (hover: hover) {
-    .hover\:bg-background\/60:hover {
-      background-color: hsl(var(--background) / 0.6);
-    }
-    .hover\:bg-muted:hover {
-      background-color: hsl(var(--muted));
-    }
+  ::selection {
+    background: rgba(244, 202, 80, 0.3);
   }
 
+  .grain-overlay {
+    position: fixed;
+    inset: 0;
+    opacity: 0.03;
+    pointer-events: none;
+    z-index: 0;
+    background-image: url("https://www.transparenttextures.com/patterns/stardust.png");
+  }
+
+  .reading-lamp-glow {
+    background: radial-gradient(circle at 50% 0%, rgba(212, 175, 55, 0.08) 0%, transparent 70%);
+  }
+
+  .glass-card {
+    background: rgba(26, 31, 46, 0.6);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(212, 175, 55, 0.1);
+    transition: all 0.3s ease;
+  }
+
+  .glass-card:hover {
+    border-color: rgba(212, 175, 55, 0.4);
+    box-shadow: 0 0 30px rgba(212, 175, 55, 0.05);
+  }
+
+  .material-symbols-outlined {
+    font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+    vertical-align: middle;
+  }
+
+  .material-symbols-filled {
+    font-variation-settings: "FILL" 1, "wght" 400, "GRAD" 0, "opsz" 24;
+    vertical-align: middle;
+  }
+
+  .fallback-stamp {
+    transform: rotate(-12deg);
+    border: 4px double rgba(212, 175, 55, 0.3);
+    text-shadow: 0 0 10px rgba(212, 175, 55, 0.2);
+  }
+
+  ::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #0e1321;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #4d4635;
+    border-radius: 10px;
+  }
+}
+
+@layer components {
   .prose {
     font-size: 1.0625rem;
     line-height: 1.75;
+    color: #dee2f6;
   }
 
   .prose p {
@@ -60,10 +93,77 @@
   .prose h2 {
     font-size: 1.375rem;
     margin-top: 1.75em;
+    font-weight: 700;
+    color: #dee2f6;
   }
 
   .prose h3 {
     font-size: 1.125rem;
     margin-top: 1.5em;
+    font-weight: 600;
+    color: #dee2f6;
+  }
+
+  .prose a {
+    color: #f2ca50;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  .prose a:hover {
+    color: #ffe088;
+  }
+
+  .prose strong {
+    color: #dee2f6;
+    font-weight: 600;
+  }
+
+  .prose code {
+    color: #f2ca50;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.875rem;
+    background: rgba(212, 175, 55, 0.1);
+    padding: 0.125rem 0.375rem;
+    border-radius: 0.25rem;
+  }
+
+  .prose pre {
+    background: #161b2a;
+    border: 1px solid rgba(212, 175, 55, 0.1);
+    border-radius: 1rem;
+    padding: 1.25rem;
+    overflow-x: auto;
+  }
+
+  .prose pre code {
+    background: none;
+    padding: 0;
+  }
+
+  .prose img {
+    border-radius: 1rem;
+  }
+
+  .prose blockquote {
+    border-left: 3px solid #f2ca50;
+    padding-left: 1rem;
+    color: #d0c5af;
+    font-style: italic;
+  }
+
+  .prose ul,
+  .prose ol {
+    padding-left: 1.5rem;
+  }
+
+  .prose li {
+    margin-top: 0.25em;
+    margin-bottom: 0.25em;
+  }
+
+  .prose hr {
+    border-color: rgba(77, 70, 53, 0.3);
+    margin: 2rem 0;
   }
 }
