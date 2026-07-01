@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Reading Hub | Nocturnal Scholar Archive</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            font-family: 'Bricolage Grotesque', sans-serif;
+            background-color: #0e1321;
+            color: #dee2f6;
+            overflow-x: hidden;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .glass-card {
+            background: rgba(26, 31, 46, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            transition: all 0.3s ease;
+        }
+        .glass-card:hover {
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.05);
+        }
+        .reading-lamp-glow {
+            background: radial-gradient(circle at center, rgba(242, 202, 80, 0.08) 0%, transparent 70%);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #0e1321;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #4d4635;
+            border-radius: 10px;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-tertiary-fixed-variant": "#54442a",
+                      "on-secondary-fixed": "#001f2a",
+                      "error-container": "#93000a",
+                      "tertiary-fixed": "#f7dfbb",
+                      "on-tertiary-container": "#524328",
+                      "on-surface-variant": "#d0c5af",
+                      "primary-container": "#d4af37",
+                      "surface-dim": "#0e1321",
+                      "background": "#0e1321",
+                      "on-tertiary": "#3c2e15",
+                      "on-primary-fixed-variant": "#574500",
+                      "on-error-container": "#ffdad6",
+                      "surface": "#0e1321",
+                      "on-secondary": "#003547",
+                      "on-tertiary-fixed": "#251a04",
+                      "tertiary-fixed-dim": "#dac3a0",
+                      "on-surface": "#dee2f6",
+                      "error": "#ffb4ab",
+                      "surface-container-highest": "#303444",
+                      "surface-container-high": "#252a39",
+                      "secondary-container": "#204e62",
+                      "surface-container-low": "#161b2a",
+                      "tertiary": "#e3cba8",
+                      "primary-fixed-dim": "#e9c349",
+                      "on-error": "#690005",
+                      "on-secondary-container": "#92bfd6",
+                      "secondary": "#a0cde4",
+                      "tertiary-container": "#c6b08e",
+                      "outline-variant": "#4d4635",
+                      "surface-variant": "#303444",
+                      "primary-fixed": "#ffe088",
+                      "on-secondary-fixed-variant": "#1d4c5f",
+                      "secondary-fixed": "#bfe9ff",
+                      "on-primary-fixed": "#241a00",
+                      "primary": "#f2ca50",
+                      "outline": "#99907c",
+                      "surface-bright": "#343948",
+                      "on-background": "#dee2f6",
+                      "inverse-on-surface": "#2b303f",
+                      "surface-container": "#1a1f2e",
+                      "on-primary": "#3c2f00",
+                      "inverse-surface": "#dee2f6",
+                      "surface-container-lowest": "#090e1c",
+                      "surface-tint": "#e9c349",
+                      "inverse-primary": "#735c00",
+                      "secondary-fixed-dim": "#a0cde4",
+                      "on-primary-container": "#554300"
+              },
+              "borderRadius": {
+                      "DEFAULT": "1rem",
+                      "lg": "2rem",
+                      "xl": "3rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "base": "8px",
+                      "margin-desktop": "48px",
+                      "gutter": "24px",
+                      "margin-mobile": "16px",
+                      "container-max": "1200px"
+              },
+              "fontFamily": {
+                      "body-lg": ["Bricolage Grotesque"],
+                      "body-md": ["Bricolage Grotesque"],
+                      "label-sm": ["Bricolage Grotesque"],
+                      "display-lg": ["Bricolage Grotesque"],
+                      "display-lg-mobile": ["Bricolage Grotesque"],
+                      "headline-md": ["Bricolage Grotesque"]
+              },
+              "fontSize": {
+                      "body-lg": ["18px", {"lineHeight": "1.6", "letterSpacing": "0", "fontWeight": "400"}],
+                      "body-md": ["16px", {"lineHeight": "1.6", "letterSpacing": "0", "fontWeight": "400"}],
+                      "label-sm": ["13px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                      "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "display-lg-mobile": ["36px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "headline-md": ["24px", {"lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "700"}]
+              }
+            },
+          },
+        }
+      </script>
+</head>
+<body class="bg-background text-on-background font-body-md">
+<!-- Sidebar Navigation -->
+<aside class="fixed left-0 top-0 h-full z-40 p-4 bg-surface-container dark:bg-surface-container text-primary dark:text-primary font-body-md text-body-md h-screen w-64 rounded-r-xl border-r border-outline-variant/20 shadow-md">
+<div class="mb-10 px-4">
+<h1 class="font-display-lg text-display-lg text-primary">Nocturnal Scholar</h1>
+<p class="text-on-surface-variant font-label-sm">IELTS Archive</p>
+</div>
+<nav class="space-y-2">
+<a class="flex items-center gap-3 px-4 py-3 rounded-full text-on-surface-variant hover:bg-surface-variant/50 transition-colors duration-200 scale-95 active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-full text-on-surface-variant hover:bg-surface-variant/50 transition-colors duration-200 scale-95 active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="hearing">hearing</span>
+<span>Listening</span>
+</a>
+<!-- Active Tab -->
+<a class="flex items-center gap-3 px-4 py-3 rounded-full bg-primary-container text-on-primary-container font-bold scale-95 active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="menu_book">menu_book</span>
+<span>Reading</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-full text-on-surface-variant hover:bg-surface-variant/50 transition-colors duration-200 scale-95 active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="edit_note">edit_note</span>
+<span>Writing</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-full text-on-surface-variant hover:bg-surface-variant/50 transition-colors duration-200 scale-95 active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="record_voice_over">record_voice_over</span>
+<span>Speaking</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-full text-on-surface-variant hover:bg-surface-variant/50 transition-colors duration-200 scale-95 active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="spellcheck">spellcheck</span>
+<span>Grammar</span>
+</a>
+</nav>
+<div class="absolute bottom-8 left-4 right-4 p-4 rounded-xl bg-surface-container-low border border-outline-variant/10">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container font-bold">JD</div>
+<div>
+<p class="text-label-sm font-bold text-on-surface">Scholar John</p>
+<p class="text-[10px] text-on-surface-variant">Archivist Level 4</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Top App Bar -->
+<header class="fixed top-0 right-0 left-64 z-30 flex justify-between items-center px-margin-desktop h-20 bg-surface/70 backdrop-blur-xl border-b border-outline-variant/10 shadow-sm text-primary dark:text-primary font-label-sm text-label-sm">
+<div class="flex items-center bg-surface-container-high rounded-full px-6 py-2 w-96 border border-outline-variant/10 focus-within:ring-2 focus-within:ring-primary/30 transition-all">
+<span class="material-symbols-outlined text-on-surface-variant mr-3" data-icon="search">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-on-surface w-full placeholder:text-on-surface-variant/50 font-body-md" placeholder="Search archive for texts..." type="text"/>
+</div>
+<div class="flex items-center gap-6">
+<button class="relative hover:text-secondary-fixed transition-colors">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span class="absolute -top-1 -right-1 w-2 h-2 bg-primary rounded-full"></span>
+</button>
+<button class="hover:text-secondary-fixed transition-colors">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+<div class="h-8 w-[1px] bg-outline-variant/30 mx-2"></div>
+<div class="flex items-center gap-3">
+<span class="text-on-surface-variant">Archive Access: </span>
+<span class="text-primary font-bold">Premium</span>
+</div>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="ml-64 pt-24 pb-12 min-h-screen relative">
+<!-- The Reading Lamp Glow Effect -->
+<div class="fixed inset-0 pointer-events-none reading-lamp-glow opacity-50 z-0"></div>
+<div class="relative z-10 px-margin-desktop max-w-container-max mx-auto">
+<!-- Hero Header -->
+<section class="mb-12">
+<div class="flex justify-between items-end mb-8">
+<div>
+<h2 class="font-display-lg text-display-lg text-on-surface mb-2 tracking-tight">Reading Hub</h2>
+<p class="text-on-surface-variant text-body-lg max-w-2xl font-light">Curated academic texts for high-level comprehension. Study in the quiet intensity of the archive.</p>
+</div>
+<div class="flex gap-4">
+<button class="bg-primary text-on-primary px-8 py-3 rounded-full font-bold hover:brightness-110 transition-all scale-95 active:scale-90">
+                        Daily Passage
+                    </button>
+</div>
+</div>
+<!-- Filter Chips -->
+<div class="flex flex-wrap gap-3 items-center">
+<span class="text-label-sm text-on-surface-variant mr-2">Question Focus:</span>
+<button class="px-6 py-2 rounded-full bg-primary-container text-on-primary-container font-bold text-label-sm border border-primary/20">All Types</button>
+<button class="px-6 py-2 rounded-full bg-surface-container border border-outline-variant/20 text-on-surface-variant hover:bg-surface-variant/40 transition-colors text-label-sm">True / False / Not Given</button>
+<button class="px-6 py-2 rounded-full bg-surface-container border border-outline-variant/20 text-on-surface-variant hover:bg-surface-variant/40 transition-colors text-label-sm">Matching Headings</button>
+<button class="px-6 py-2 rounded-full bg-surface-container border border-outline-variant/20 text-on-surface-variant hover:bg-surface-variant/40 transition-colors text-label-sm">Sentence Completion</button>
+<button class="px-6 py-2 rounded-full bg-surface-container border border-outline-variant/20 text-on-surface-variant hover:bg-surface-variant/40 transition-colors text-label-sm">Multiple Choice</button>
+<button class="px-6 py-2 rounded-full bg-surface-container border border-outline-variant/20 text-on-surface-variant hover:bg-surface-variant/40 transition-colors text-label-sm">Summary Completion</button>
+</div>
+</section>
+<!-- Article Bento Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<!-- Article Card 1 -->
+<div class="glass-card rounded-xl overflow-hidden flex flex-col group h-full">
+<div class="h-48 relative overflow-hidden">
+<div class="w-full h-full bg-cover bg-center group-hover:scale-110 transition-transform duration-700" data-alt="A macro photograph of ancient botanical illustrations on aged vellum paper. The lighting is soft and warm, like candlelight, highlighting the texture of the paper and the faded teal and gold ink. Deep shadows and a refined, academic atmosphere." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDONMMdWuvRYLE3AMNGucQyqMi1ux8xAyvIlA6Z9BOqH743-KClcxfm2J1eYVHE8tYAxJacbX3U8a5bDcV40R0F9iwGtwntCcT5ucNzIbSXD0-D-Dwhj50nIXmkkR3hm6EAAkRIuxbw_-m5JVOLiVoeXAFceh7n3ahRU1E_NoGb94IPq5wpHkEA4pP7sogITBgvcLWcgFtrn5HPRdhXg_6q5hhKW65dvIbfcLyFNc65mSkR62muOMDzO823_WzaoXEbyIG8XKrKdOk')"></div>
+<div class="absolute top-4 left-4 flex gap-2">
+<span class="px-3 py-1 rounded-full bg-secondary-container/80 backdrop-blur-md text-on-secondary-container text-[10px] font-bold uppercase tracking-wider">Science</span>
+<span class="px-3 py-1 rounded-full bg-primary-container/80 backdrop-blur-md text-on-primary-container text-[10px] font-bold uppercase tracking-wider">Level 8.5</span>
+</div>
+</div>
+<div class="p-8 flex-grow flex flex-col">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-3 group-hover:text-primary transition-colors leading-tight tracking-tight">The Resilience of Urban Ecosystems</h3>
+<p class="text-on-surface-variant text-body-md line-clamp-3 mb-6 font-light">Exploring how modern metropolises are inadvertently becoming havens for endangered species through architectural mimicry.</p>
+<div class="mt-auto flex items-center justify-between">
+<div class="flex gap-2">
+<span class="material-symbols-outlined text-primary text-sm" data-icon="timer">timer</span>
+<span class="text-label-sm text-on-surface-variant font-medium">18 min read</span>
+</div>
+<a class="text-primary font-bold text-label-sm flex items-center gap-1 hover:underline underline-offset-4 tracking-wide" href="#">
+                            OPEN ARCHIVE <span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+<!-- Article Card 2 -->
+<div class="glass-card rounded-xl overflow-hidden flex flex-col group h-full">
+<div class="h-48 relative overflow-hidden">
+<div class="w-full h-full bg-cover bg-center group-hover:scale-110 transition-transform duration-700" data-alt="A minimalist architectural shot of a brutalist library concrete staircase at night. Stark geometric shadows are cast by a single high-intensity warm light source. The color palette is composed of deep midnight blues, charcoal greys, and a sharp focal point of warm amber gold." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBSLhzwJLMs5lKQ5rutIM98m7eRh05NiC-15lvsruGd7Yq7j643FOkEpyfemOmmzJSUgfjZ5AR92Y9zF3oBjIJ5jYP_mzJrA9QzSiT7Qb8E12y59387vyYYJalfO8U_XDIXFuwh_ktmxTNdslr4FaeHbGm6TnnzKihKpJXNZ3f-37P8P10V8KWzp9bxy2QpGlzBfoB-baCsDNuBhpCvao_w46lrw1UbMbLEp9N3kK3GVSte8qQljv7ADX-3Bx5CI7t8AyOyl-JW_1w')"></div>
+<div class="absolute top-4 left-4 flex gap-2">
+<span class="px-3 py-1 rounded-full bg-secondary-container/80 backdrop-blur-md text-on-secondary-container text-[10px] font-bold uppercase tracking-wider">History</span>
+<span class="px-3 py-1 rounded-full bg-primary-container/80 backdrop-blur-md text-on-primary-container text-[10px] font-bold uppercase tracking-wider">Level 7.0</span>
+</div>
+</div>
+<div class="p-8 flex-grow flex flex-col">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-3 group-hover:text-primary transition-colors leading-tight tracking-tight">The Cryptic Language of Renaissance Maps</h3>
+<p class="text-on-surface-variant text-body-md line-clamp-3 mb-6 font-light">Investigating the socio-political hidden messages embedded within 16th-century cartographic masterpieces.</p>
+<div class="mt-auto flex items-center justify-between">
+<div class="flex gap-2">
+<span class="material-symbols-outlined text-primary text-sm" data-icon="timer">timer</span>
+<span class="text-label-sm text-on-surface-variant font-medium">22 min read</span>
+</div>
+<a class="text-primary font-bold text-label-sm flex items-center gap-1 hover:underline underline-offset-4 tracking-wide" href="#">
+                            OPEN ARCHIVE <span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+<!-- Article Card 3 -->
+<div class="glass-card rounded-xl overflow-hidden flex flex-col group h-full">
+<div class="h-48 relative overflow-hidden">
+<div class="w-full h-full bg-cover bg-center group-hover:scale-110 transition-transform duration-700" data-alt="An abstract visualization of digital neural networks forming the shape of a human brain. The design uses very thin glowing lines of gold and teal against a pitch-black background. A grainy texture mimics the quality of archival film, creating a prestigious and intellectual tech-noir aesthetic." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCkSR39BWIUU05pQa0cHcNo6-QGNjHhW0XX-LvpbtjCNU8DocWm2PclR-EwlVNxFaABJT__nCi6vKpH5WkTk3JItem-FeuSqWHn3tZXq5v4cuv_FYZQfHlWoczlvYU2H4w_ORZgcekNdq3AboEI_-0zAz2aFPJTvGO3ryaMlu_ea9ettcu8mNMxXezdbuH3yl1WNq86GhkkHe2-abgbrCdV2dfJ-ek_Ne4IFBuGqHKLGPX5ceC_iyknwHQx0x6ldFOrhEALSuhzDxU')"></div>
+<div class="absolute top-4 left-4 flex gap-2">
+<span class="px-3 py-1 rounded-full bg-secondary-container/80 backdrop-blur-md text-on-secondary-container text-[10px] font-bold uppercase tracking-wider">Psychology</span>
+<span class="px-3 py-1 rounded-full bg-primary-container/80 backdrop-blur-md text-on-primary-container text-[10px] font-bold uppercase tracking-wider">Level 9.0</span>
+</div>
+</div>
+<div class="p-8 flex-grow flex flex-col">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-3 group-hover:text-primary transition-colors leading-tight tracking-tight">Cognitive Load and Digital Learning</h3>
+<p class="text-on-surface-variant text-body-md line-clamp-3 mb-6 font-light">How the shift from paper-based to screen-based reading affects deep comprehension and semantic memory retention.</p>
+<div class="mt-auto flex items-center justify-between">
+<div class="flex gap-2">
+<span class="material-symbols-outlined text-primary text-sm" data-icon="timer">timer</span>
+<span class="text-label-sm text-on-surface-variant font-medium">15 min read</span>
+</div>
+<a class="text-primary font-bold text-label-sm flex items-center gap-1 hover:underline underline-offset-4 tracking-wide" href="#">
+                            OPEN ARCHIVE <span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+<!-- Article Card 4 -->
+<div class="glass-card rounded-xl overflow-hidden flex flex-col group h-full">
+<div class="h-48 relative overflow-hidden">
+<div class="w-full h-full bg-cover bg-center group-hover:scale-110 transition-transform duration-700" data-alt="A close-up of a telescope lens reflecting a deep starry nebula. The image is stylized with a muted gold tint and deep teal shadows. The mood is one of cosmic wonder, yet intellectually grounded, featuring a fine noise texture consistent with luxury print materials." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuA-UM83Y6MSzABLzKIqQ0ah_4O27z0e0bzqamK01o7B93jMWU0lls8f5osNiU4IofPaJo1oN2JH533GlQp8A1Ds3xgeHvBBY6pq7_YUbjWjzj-MHa2nW2aQ1oPIoDu-fMNAG6cAHFmrtAm0BCF0mMl1GBrh1_KL0XxvQv-4HUCjDlkP5NOCvgL_25_qzlAHKmxXlZ61Woq1KH2M_aDuH2_qbl8Gqarz9aUlP1ZY_vxXrJo1gqymfGDlihU5n6Tpy51_cR-HIz8nggE')"></div>
+<div class="absolute top-4 left-4 flex gap-2">
+<span class="px-3 py-1 rounded-full bg-secondary-container/80 backdrop-blur-md text-on-secondary-container text-[10px] font-bold uppercase tracking-wider">Astronomy</span>
+<span class="px-3 py-1 rounded-full bg-primary-container/80 backdrop-blur-md text-on-primary-container text-[10px] font-bold uppercase tracking-wider">Level 6.5</span>
+</div>
+</div>
+<div class="p-8 flex-grow flex flex-col">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-3 group-hover:text-primary transition-colors leading-tight tracking-tight">Searching for Life in the Ice Moons</h3>
+<p class="text-on-surface-variant text-body-md line-clamp-3 mb-6 font-light">The geological prospects of Europa and Enceladus as potential cradles for extraterrestrial microbial life.</p>
+<div class="mt-auto flex items-center justify-between">
+<div class="flex gap-2">
+<span class="material-symbols-outlined text-primary text-sm" data-icon="timer">timer</span>
+<span class="text-label-sm text-on-surface-variant font-medium">20 min read</span>
+</div>
+<a class="text-primary font-bold text-label-sm flex items-center gap-1 hover:underline underline-offset-4 tracking-wide" href="#">
+                            OPEN ARCHIVE <span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+<!-- Article Card 5 -->
+<div class="glass-card rounded-xl overflow-hidden flex flex-col group h-full">
+<div class="h-48 relative overflow-hidden">
+<div class="w-full h-full bg-cover bg-center group-hover:scale-110 transition-transform duration-700" data-alt="High-end studio photography of a vintage glass hourglass on a dark wood desk. The sand is composed of tiny glowing gold particles. Deep teal lighting from the side creates dramatic highlights. The overall aesthetic is one of prestige, patience, and the passing of time in an academic setting." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDYFo0V5nhRG7XEqysfIVtDf8kqbz1v50oOOLFTOe8O5YPiJ6Nb9v4Qj5JN9EZwtY8N72iUMKa09OeevLrRYSMSdcgbOwKXxeoHcaSSjgfgEGR9l_F8SFfWv9JXGxpVnvmGL1FhFcSX4i9YIbf8YOeZ5wfmWhWZGDWRWAPS9c5tFvwMIfAfNhZkvYw1ruSIBKmRHuzogQHWTuPunx9uGXZXqxB-hwSLI_r4q0HwIZ6rgLUjvzsAU3PRua2RAM0fBoqE8EeNoj7IiTk')"></div>
+<div class="absolute top-4 left-4 flex gap-2">
+<span class="px-3 py-1 rounded-full bg-secondary-container/80 backdrop-blur-md text-on-secondary-container text-[10px] font-bold uppercase tracking-wider">Philosophy</span>
+<span class="px-3 py-1 rounded-full bg-primary-container/80 backdrop-blur-md text-on-primary-container text-[10px] font-bold uppercase tracking-wider">Level 8.0</span>
+</div>
+</div>
+<div class="p-8 flex-grow flex flex-col">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-3 group-hover:text-primary transition-colors leading-tight tracking-tight">The Concept of Time in Ancient Cultures</h3>
+<p class="text-on-surface-variant text-body-md line-clamp-3 mb-6 font-light">A comparative study of linear versus cyclical perceptions of time and their influence on societal development.</p>
+<div class="mt-auto flex items-center justify-between">
+<div class="flex gap-2">
+<span class="material-symbols-outlined text-primary text-sm" data-icon="timer">timer</span>
+<span class="text-label-sm text-on-surface-variant font-medium">25 min read</span>
+</div>
+<a class="text-primary font-bold text-label-sm flex items-center gap-1 hover:underline underline-offset-4 tracking-wide" href="#">
+                            OPEN ARCHIVE <span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+<!-- Pagination / Load More -->
+<div class="col-span-full py-12 flex flex-col items-center gap-6">
+<p class="text-on-surface-variant font-label-sm italic text-center font-light">You have explored 5 of 142 archival texts.</p>
+<button class="px-12 py-4 rounded-full border border-primary text-primary font-bold hover:bg-primary/5 transition-all flex items-center gap-2 group scale-95 active:scale-90 tracking-widest">
+                    UNCOVER MORE TEXTS
+                    <span class="material-symbols-outlined group-hover:translate-y-1 transition-transform" data-icon="expand_more">expand_more</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="ml-64 w-[calc(100%-16rem)] p-8 flex justify-between items-center bg-surface-container-lowest dark:bg-surface-container-lowest border-t border-outline-variant/10 text-secondary dark:text-secondary font-label-sm text-label-sm shadow-none">
+<p class="text-on-surface-variant">© 2024 Nocturnal Scholar Archive. All Rights Reserved.</p>
+<div class="flex gap-8">
+<a class="text-on-surface-variant hover:text-secondary-fixed transition-colors" href="#">Archive Status</a>
+<a class="text-on-surface-variant hover:text-secondary-fixed transition-colors" href="#">Terms of Service</a>
+<a class="text-on-surface-variant hover:text-secondary-fixed transition-colors" href="#">Privacy Policy</a>
+<a class="text-on-surface-variant hover:text-secondary-fixed transition-colors" href="#">Institutional Access</a>
+</div>
+</footer>
+<!-- Floating Action Button -->
+<button class="fixed bottom-10 right-10 w-16 h-16 rounded-full bg-primary text-on-primary flex items-center justify-center shadow-2xl hover:scale-110 active:scale-95 transition-all z-50">
+<span class="material-symbols-outlined text-3xl" data-icon="menu_book">menu_book</span>
+</button>
+<script>
+    // Micro-interactions for the search bar
+    const searchInput = document.querySelector('input');
+    const searchContainer = searchInput.parentElement;
+
+    searchInput.addEventListener('focus', () => {
+        searchContainer.classList.add('border-primary/50');
+    });
+
+    searchInput.addEventListener('blur', () => {
+        searchContainer.classList.remove('border-primary/50');
+    });
+
+    // Filter chip selection logic
+    const chips = document.querySelectorAll('button.rounded-full');
+    chips.forEach(chip => {
+        if(chip.textContent.trim() !== 'UNCOVER MORE TEXTS' && chip.textContent.trim() !== 'Daily Passage') {
+            chip.addEventListener('click', () => {
+                chips.forEach(c => {
+                    if (c.classList.contains('bg-primary-container')) {
+                        c.classList.remove('bg-primary-container', 'text-on-primary-container', 'font-bold', 'border-primary/20');
+                        c.classList.add('bg-surface-container', 'text-on-surface-variant', 'border-outline-variant/20');
+                    }
+                });
+                chip.classList.remove('bg-surface-container', 'text-on-surface-variant', 'border-outline-variant/20');
+                chip.classList.add('bg-primary-container', 'text-on-primary-container', 'font-bold', 'border-primary/20');
+            });
+        }
+    });
+</script>
+</body></html>

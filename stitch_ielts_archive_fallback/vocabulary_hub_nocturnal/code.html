@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Vocabulary Hub | Nocturnal Scholar Archive</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-lowest": "#0c0e12",
+                    "surface-dim": "#111317",
+                    "primary-fixed": "#dee2f6",
+                    "primary-container": "#0a0f1d",
+                    "background": "#111317",
+                    "error-container": "#93000a",
+                    "tertiary": "#bec6df",
+                    "surface-tint": "#c2c6da",
+                    "on-tertiary-fixed-variant": "#3f465b",
+                    "tertiary-fixed-dim": "#bec6df",
+                    "surface-container-low": "#1a1c1f",
+                    "on-primary-container": "#777b8d",
+                    "on-background": "#e2e2e7",
+                    "surface": "#111317",
+                    "on-surface-variant": "#c6c6cc",
+                    "surface-container-highest": "#333539",
+                    "outline": "#909096",
+                    "on-secondary-fixed-variant": "#544600",
+                    "error": "#ffb4ab",
+                    "on-secondary": "#3a3000",
+                    "primary-fixed-dim": "#c2c6da",
+                    "on-primary-fixed-variant": "#424657",
+                    "on-secondary-fixed": "#221b00",
+                    "secondary-fixed": "#ffe16d",
+                    "surface-variant": "#333539",
+                    "on-secondary-container": "#725f00",
+                    "on-primary-fixed": "#161b2a",
+                    "surface-container-high": "#282a2e",
+                    "inverse-surface": "#e2e2e7",
+                    "tertiary-fixed": "#dae2fc",
+                    "on-primary": "#2b303f",
+                    "on-tertiary-fixed": "#131b2e",
+                    "on-surface": "#e2e2e7",
+                    "inverse-primary": "#595e6f",
+                    "tertiary-container": "#070f21",
+                    "surface-container": "#1e2023",
+                    "secondary-fixed-dim": "#e9c400",
+                    "outline-variant": "#46464c",
+                    "on-tertiary": "#283044",
+                    "primary": "#c2c6da",
+                    "surface-bright": "#37393d",
+                    "on-tertiary-container": "#747c93",
+                    "secondary-container": "#ffdb3c",
+                    "inverse-on-surface": "#2e3034",
+                    "secondary": "#fff9ef",
+                    "on-error-container": "#ffdad6",
+                    "on-error": "#690005"
+            },
+            "borderRadius": {
+                    "DEFAULT": "1rem",
+                    "lg": "2rem",
+                    "xl": "3rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "md": "24px",
+                    "xl": "80px",
+                    "xs": "4px",
+                    "sm": "12px",
+                    "margin-mobile": "16px",
+                    "gutter": "24px",
+                    "margin-desktop": "64px",
+                    "lg": "48px",
+                    "base": "8px"
+            },
+            "fontFamily": {
+                    "headline-lg-mobile": ["Bricolage Grotesque"],
+                    "label-sm": ["Bricolage Grotesque"],
+                    "headline-lg": ["Bricolage Grotesque"],
+                    "body-lg": ["Bricolage Grotesque"],
+                    "label-md": ["Bricolage Grotesque"],
+                    "headline-xl": ["Bricolage Grotesque"],
+                    "body-md": ["Bricolage Grotesque"],
+                    "headline-md": ["Bricolage Grotesque"]
+            },
+            "fontSize": {
+                    "headline-lg-mobile": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "label-sm": ["12px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "headline-lg": ["40px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "letterSpacing": "0em", "fontWeight": "400"}],
+                    "label-md": ["14px", {"lineHeight": "1.2", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                    "headline-xl": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "800"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "letterSpacing": "0em", "fontWeight": "400"}],
+                    "headline-md": ["24px", {"lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #111317;
+            color: #e2e2e7;
+            font-family: 'Bricolage Grotesque', sans-serif;
+            overflow-x: hidden;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(22, 30, 49, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .gold-glow:hover {
+            box-shadow: 0 0 20px rgba(233, 196, 0, 0.15);
+            border-color: #e9c400;
+        }
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0c0e12;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #333539;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #e9c400;
+        }
+    </style>
+</head>
+<body class="dark bg-background text-on-background">
+<!-- Side Navigation Shell -->
+<nav class="fixed left-0 top-0 h-full z-40 p-4 bg-surface-container dark:bg-surface-container h-screen w-64 rounded-r-xl border-r border-outline-variant/20 shadow-md">
+<div class="mb-10 px-4">
+<h1 class="font-display-lg text-display-lg text-primary font-headline-md text-headline-md mb-1">Nocturnal Scholar</h1>
+<p class="font-body-md text-body-md text-on-surface-variant opacity-70">IELTS Archive</p>
+</div>
+<div class="space-y-2">
+<a class="flex items-center gap-3 px-4 py-3 rounded-full text-on-surface-variant hover:bg-surface-variant/50 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-body-md text-body-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-full text-on-surface-variant hover:bg-surface-variant/50 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">hearing</span>
+<span class="font-body-md text-body-md">Listening</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-full text-on-surface-variant hover:bg-surface-variant/50 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">menu_book</span>
+<span class="font-body-md text-body-md">Reading</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-full text-on-surface-variant hover:bg-surface-variant/50 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">edit_note</span>
+<span class="font-body-md text-body-md">Writing</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-full text-on-surface-variant hover:bg-surface-variant/50 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">record_voice_over</span>
+<span class="font-body-md text-body-md">Speaking</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-full text-on-surface-variant hover:bg-surface-variant/50 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">spellcheck</span>
+<span class="font-body-md text-body-md">Grammar</span>
+</a>
+<!-- Active Navigation Item: Vocabulary -->
+<a class="flex items-center gap-3 px-4 py-3 rounded-full bg-primary-container text-on-primary-container font-bold transition-transform scale-95 active:scale-90" href="#">
+<span class="material-symbols-outlined">dictionary</span>
+<span class="font-body-md text-body-md">Vocabulary</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-full text-on-surface-variant hover:bg-surface-variant/50 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">info</span>
+<span class="font-body-md text-body-md">About</span>
+</a>
+</div>
+<div class="absolute bottom-8 left-0 w-full px-8">
+<div class="flex items-center gap-3 p-3 rounded-xl bg-surface-container-high border border-outline-variant/10">
+<img class="w-10 h-10 rounded-full object-cover" data-alt="A cinematic, high-contrast portrait of a scholarly individual with glasses, focused and studious, in a dimly lit library filled with ancient leather-bound books. The lighting is warm and amber, creating a sophisticated academic atmosphere that complements the dark navy and gold UI theme." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBFGa3lxZWsenxk2lk2Lk1o5JSReH73BRic489Rjp-HXTjFvN82PyDxsgYDvjFjTopMTqZxpurmNbrXd-QSDVXCwcXBWZ28mBtQlQv_TXl-TxHNywTTWIetwc9w6MbIVyU7CJjbGLG8h6mvLF_TSnuHX5h3eUXdgFCD2ZW76b6VS5tebEGtQqRPJg7lC6twpQuNORZRKHR9O7HQ3GEJQ825Qyf9QMT9ViIAVutuau9ZkAaXEqzZt38skAb2aq1mYjN1R3q6kwkIzVI"/>
+<div>
+<p class="font-label-sm text-label-sm text-on-surface">Scholar Profile</p>
+<p class="text-[10px] text-on-surface-variant uppercase tracking-widest">Level C2</p>
+</div>
+</div>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="ml-64 min-h-screen relative">
+<!-- Top App Bar -->
+<header class="fixed top-0 right-0 left-64 z-30 flex justify-between items-center px-margin-desktop h-20 bg-surface/70 backdrop-blur-xl border-b border-outline-variant/10 shadow-sm">
+<div class="flex items-center gap-6 w-1/2">
+<div class="relative w-full max-w-md group">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="w-full bg-surface-container-low border border-outline-variant/20 rounded-full py-2.5 pl-12 pr-4 focus:outline-none focus:ring-2 focus:ring-secondary-fixed-dim/30 transition-all font-body-md text-body-md placeholder:text-on-surface-variant/50" placeholder="Search archive for collocations, idioms..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors">notifications</button>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors">settings</button>
+</div>
+<div class="h-8 w-[1px] bg-outline-variant/20"></div>
+<div class="flex items-center gap-3">
+<span class="font-label-md text-label-md text-on-surface">Archive Status: <span class="text-secondary-fixed-dim">Online</span></span>
+</div>
+</div>
+</header>
+<!-- Content Stage -->
+<section class="pt-32 pb-xl px-margin-desktop max-w-7xl mx-auto">
+<!-- Hero Header -->
+<div class="mb-xl flex justify-between items-end">
+<div class="max-w-2xl">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-secondary-fixed-dim/10 border border-secondary-fixed-dim/20 text-secondary-fixed-dim mb-4">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider">Thematic Lexicon</span>
+</div>
+<h2 class="font-headline-xl text-headline-xl mb-4">Vocabulary <br/><span class="text-secondary-fixed-dim">Mastery Hub.</span></h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">A curated repository of high-level academic vocabulary, complex collocations, and idiomatic expressions retrieved from the nocturnal scholar's deep-web archives.</p>
+</div>
+<div class="hidden lg:block text-right">
+<div class="font-headline-md text-headline-md text-secondary-fixed-dim">8,421</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest">Words Indexed</div>
+</div>
+</div>
+<!-- Bento Grid of Word Banks -->
+<div class="grid grid-cols-12 gap-gutter">
+<!-- Large Featured Category -->
+<div class="col-span-12 lg:col-span-8 p-lg rounded-lg glass-card gold-glow transition-all relative overflow-hidden group">
+<div class="relative z-10">
+<div class="flex justify-between items-start mb-12">
+<div>
+<h3 class="font-headline-md text-headline-md mb-2">Environmental Discourse</h3>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-md">Master the lexicon for Climate Change, Sustainable Energy, and Biodiversity impacts.</p>
+</div>
+<div class="bg-secondary-fixed-dim text-surface-container-lowest p-3 rounded-full group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">eco</span>
+</div>
+</div>
+<div class="flex flex-wrap gap-2 mb-8">
+<span class="px-4 py-2 rounded-full bg-surface-container-highest/50 border border-outline-variant/30 font-label-md text-label-md">Mitigate (v)</span>
+<span class="px-4 py-2 rounded-full bg-surface-container-highest/50 border border-outline-variant/30 font-label-md text-label-md">Anthropogenic (adj)</span>
+<span class="px-4 py-2 rounded-full bg-surface-container-highest/50 border border-outline-variant/30 font-label-md text-label-md">Irreversible (adj)</span>
+<span class="px-4 py-2 rounded-full bg-surface-container-highest/50 border border-outline-variant/30 font-label-md text-label-md">Tipping Point (n)</span>
+<span class="px-4 py-2 rounded-full bg-surface-container-highest/50 border border-outline-variant/30 font-label-md text-label-md">Biodiversity (n)</span>
+</div>
+<button class="bg-secondary-fixed-dim text-on-secondary-fixed px-8 py-3 rounded-full font-label-md text-label-md font-bold transition-all hover:scale-105 active:scale-95">Explore Collection</button>
+</div>
+<div class="absolute right-[-10%] bottom-[-10%] opacity-10 group-hover:opacity-20 transition-opacity">
+<span class="material-symbols-outlined text-[300px]" style="font-variation-settings: 'FILL' 1;">forest</span>
+</div>
+</div>
+<!-- Small Category -->
+<div class="col-span-12 lg:col-span-4 p-lg rounded-lg glass-card gold-glow transition-all flex flex-col justify-between">
+<div>
+<div class="flex items-center gap-4 mb-6">
+<div class="bg-primary/20 text-primary p-3 rounded-full">
+<span class="material-symbols-outlined">science</span>
+</div>
+<h3 class="font-headline-md text-headline-md">Technology</h3>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6">Collocations and idiomatic phrases surrounding Artificial Intelligence and Automation.</p>
+</div>
+<div class="space-y-3">
+<div class="flex justify-between items-center text-on-surface-variant border-b border-outline-variant/10 pb-2">
+<span class="font-label-md text-label-md">Cutting-edge</span>
+<span class="font-label-sm text-label-sm opacity-60">Collocation</span>
+</div>
+<div class="flex justify-between items-center text-on-surface-variant border-b border-outline-variant/10 pb-2">
+<span class="font-label-md text-label-md">Disruptive</span>
+<span class="font-label-sm text-label-sm opacity-60">Adjective</span>
+</div>
+<button class="text-secondary-fixed-dim font-label-md text-label-md flex items-center gap-2 hover:gap-4 transition-all pt-4">
+                            View All <span class="material-symbols-outlined">arrow_right_alt</span>
+</button>
+</div>
+</div>
+<!-- Academic Word List Section -->
+<div class="col-span-12 lg:col-span-4 p-lg rounded-lg glass-card gold-glow transition-all">
+<div class="flex items-center gap-4 mb-6">
+<div class="bg-primary/20 text-primary p-3 rounded-full">
+<span class="material-symbols-outlined">draw</span>
+</div>
+<h3 class="font-headline-md text-headline-md">Art &amp; Culture</h3>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6">Describe artistic movements, aesthetic value, and cultural heritage.</p>
+<div class="flex flex-wrap gap-2">
+<span class="px-3 py-1 rounded-full bg-secondary-fixed-dim/5 text-secondary-fixed-dim border border-secondary-fixed-dim/20 font-label-sm text-label-sm">Avante-garde</span>
+<span class="px-3 py-1 rounded-full bg-secondary-fixed-dim/5 text-secondary-fixed-dim border border-secondary-fixed-dim/20 font-label-sm text-label-sm">Sublime</span>
+<span class="px-3 py-1 rounded-full bg-secondary-fixed-dim/5 text-secondary-fixed-dim border border-secondary-fixed-dim/20 font-label-sm text-label-sm">Evocative</span>
+</div>
+</div>
+<div class="col-span-12 lg:col-span-4 p-lg rounded-lg glass-card gold-glow transition-all relative overflow-hidden group">
+<div class="absolute inset-0 bg-cover bg-center opacity-20 group-hover:scale-110 transition-transform duration-700" data-alt="A dark, moody abstract image of floating digital particles and data nodes in a constellation pattern. The color scheme is deep navy blue with sparkling golden highlights, representing a network of knowledge and complex data collocations. Professional and high-tech digital art style." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAy4pUE3-nhbujVhVwA0Ie5hKzQ8_dHEKnbfDk-ODWg5RUAgdjy2945nPQSbm_ypvcIP5KUZsBzPQhDEtVRNKoHLYlj7rIMUU7rHeP0sMgbBC7KIRDkOuUWPj_vNtb80XcETFBPV3SVX4RVVLmvsDMduH7WfNgZVcAFheExFm4J6paP64P864cfh7WEN71zMQwtYuNLVfxTEa8oHEmUIE5-RLVQkVtKCRFFmbGOHSYFre6OqHfrPCbc-D_c41xIIvZ1dymuKVxAzX0')"></div>
+<div class="relative z-10 h-full flex flex-col justify-between">
+<div>
+<h3 class="font-headline-md text-headline-md mb-2">Complex Collocations</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Advanced word pairings that sound naturally fluent.</p>
+</div>
+<div class="mt-8 bg-surface-container-highest/80 backdrop-blur p-4 rounded-xl border border-outline-variant/30">
+<p class="font-body-md text-body-md italic text-primary">"Striking a balance between..."</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-2">Common in Task 2 essays.</p>
+</div>
+</div>
+</div>
+<div class="col-span-12 lg:col-span-4 p-lg rounded-lg glass-card gold-glow transition-all">
+<div class="flex items-center gap-4 mb-6">
+<div class="bg-primary/20 text-primary p-3 rounded-full">
+<span class="material-symbols-outlined">trending_up</span>
+</div>
+<h3 class="font-headline-md text-headline-md">Economic Trends</h3>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6">Precision vocabulary for describing fiscal shifts and market behaviors.</p>
+<div class="grid grid-cols-2 gap-2">
+<div class="bg-surface-container-low p-3 rounded-xl border border-outline-variant/10 text-center">
+<p class="font-label-md text-label-md text-on-surface">Volatility</p>
+</div>
+<div class="bg-surface-container-low p-3 rounded-xl border border-outline-variant/10 text-center">
+<p class="font-label-md text-label-md text-on-surface">Prosperity</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Collapsible Detail Section: Daily Idiom -->
+<div class="mt-xl p-lg rounded-xl glass-card border border-secondary-fixed-dim/20 bg-gradient-to-r from-surface-container-low to-surface-container-lowest">
+<div class="flex flex-col md:flex-row gap-lg items-center">
+<div class="w-24 h-24 flex-shrink-0 flex items-center justify-center bg-secondary-fixed-dim rounded-full text-surface-container-lowest">
+<span class="material-symbols-outlined text-[48px]" style="font-variation-settings: 'FILL' 1;">lightbulb</span>
+</div>
+<div>
+<span class="font-label-sm text-label-sm text-secondary-fixed-dim uppercase tracking-widest mb-2 block">Idiom of the Night</span>
+<h4 class="font-headline-md text-headline-md mb-2 italic">"At a crossroads"</h4>
+<p class="font-body-md text-body-md text-on-surface-variant mb-4">A situation that requires a very important decision to be made, typically one that will have a significant impact on the future.</p>
+<div class="p-4 bg-surface-container-highest/30 rounded-lg border-l-4 border-secondary-fixed-dim">
+<p class="font-body-md text-body-md text-on-surface">"The government is currently <span class="text-secondary-fixed-dim font-bold">at a crossroads</span> regarding its environmental policy."</p>
+</div>
+</div>
+<div class="md:ml-auto">
+<button class="border border-secondary-fixed-dim text-secondary-fixed-dim px-6 py-3 rounded-full font-label-md text-label-md hover:bg-secondary-fixed-dim hover:text-surface-container-lowest transition-all">Add to Flashcards</button>
+</div>
+</div>
+</div>
+<!-- Fallback Status Marker -->
+<div class="mt-lg flex items-center justify-center gap-4 py-8 opacity-40 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-500">
+<span class="h-[1px] w-12 bg-outline-variant"></span>
+<div class="flex items-center gap-2 font-label-sm text-label-sm uppercase tracking-[0.2em] text-on-surface-variant">
+<span class="material-symbols-outlined text-[14px]">history</span>
+                    Archive Synchronized: 2024-11-04
+                </div>
+<span class="h-[1px] w-12 bg-outline-variant"></span>
+</div>
+</section>
+<!-- Footer Shell -->
+<footer class="ml-0 w-full p-8 flex justify-between items-center border-t border-outline-variant/10 bg-surface-container-lowest dark:bg-surface-container-lowest">
+<div class="flex items-center gap-6">
+<p class="font-label-sm text-label-sm text-on-surface-variant">© 2024 Nocturnal Scholar Archive. All Rights Reserved.</p>
+</div>
+<div class="flex gap-8">
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-secondary-fixed transition-colors underline-offset-4" href="#">Archive Status</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-secondary-fixed transition-colors underline-offset-4" href="#">Terms of Service</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-secondary-fixed transition-colors underline-offset-4" href="#">Privacy Policy</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-secondary-fixed transition-colors underline-offset-4" href="#">Institutional Access</a>
+</div>
+</footer>
+</main>
+<!-- Floating Action Button for Study Mode -->
+<div class="fixed bottom-10 right-10 z-50">
+<button class="flex items-center gap-3 px-6 py-4 bg-secondary-fixed-dim text-surface-container-lowest rounded-full shadow-2xl hover:scale-110 active:scale-95 transition-all group">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">quiz</span>
+<span class="font-label-md text-label-md font-bold">Start Quiz</span>
+</button>
+</div>
+<!-- Micro-interaction Scripts -->
+<script>
+        // Subtle background mouse follow effect
+        document.addEventListener('mousemove', (e) => {
+            const x = (e.clientX / window.innerWidth) * 100;
+            const y = (e.clientY / window.innerHeight) * 100;
+            // Background glow or similar effects could be added here
+        });
+
+        // Search Bar Focus Effect
+        const searchInput = document.querySelector('input[type="text"]');
+        searchInput.addEventListener('focus', () => {
+            searchInput.parentElement.classList.add('ring-2', 'ring-secondary-fixed-dim/30');
+        });
+        searchInput.addEventListener('blur', () => {
+            searchInput.parentElement.classList.remove('ring-2', 'ring-secondary-fixed-dim/30');
+        });
+    </script>
+</body></html>

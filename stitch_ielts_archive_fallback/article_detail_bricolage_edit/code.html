@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Understanding Academic English | Nocturnal Scholar</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-fixed-variant": "#54442a",
+                        "on-secondary-fixed": "#001f2a",
+                        "error-container": "#93000a",
+                        "tertiary-fixed": "#f7dfbb",
+                        "on-tertiary-container": "#524328",
+                        "on-surface-variant": "#d0c5af",
+                        "primary-container": "#d4af37",
+                        "surface-dim": "#0e1321",
+                        "background": "#0e1321",
+                        "on-tertiary": "#3c2e15",
+                        "on-primary-fixed-variant": "#574500",
+                        "on-error-container": "#ffdad6",
+                        "surface": "#0e1321",
+                        "on-secondary": "#003547",
+                        "on-tertiary-fixed": "#251a04",
+                        "tertiary-fixed-dim": "#dac3a0",
+                        "on-surface": "#dee2f6",
+                        "error": "#ffb4ab",
+                        "surface-container-highest": "#303444",
+                        "surface-container-high": "#252a39",
+                        "secondary-container": "#204e62",
+                        "surface-container-low": "#161b2a",
+                        "tertiary": "#e3cba8",
+                        "primary-fixed-dim": "#e9c349",
+                        "on-error": "#690005",
+                        "on-secondary-container": "#92bfd6",
+                        "secondary": "#a0cde4",
+                        "tertiary-container": "#c6b08e",
+                        "outline-variant": "#4d4635",
+                        "surface-variant": "#303444",
+                        "primary-fixed": "#ffe088",
+                        "on-secondary-fixed-variant": "#1d4c5f",
+                        "secondary-fixed": "#bfe9ff",
+                        "on-primary-fixed": "#241a00",
+                        "primary": "#f2ca50",
+                        "outline": "#99907c",
+                        "surface-bright": "#343948",
+                        "on-background": "#dee2f6",
+                        "inverse-on-surface": "#2b303f",
+                        "surface-container": "#1a1f2e",
+                        "on-primary": "#3c2f00",
+                        "inverse-surface": "#dee2f6",
+                        "surface-container-lowest": "#090e1c",
+                        "surface-tint": "#e9c349",
+                        "inverse-primary": "#735c00",
+                        "secondary-fixed-dim": "#a0cde4",
+                        "on-primary-container": "#554300"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "base": "8px",
+                        "margin-desktop": "48px",
+                        "gutter": "24px",
+                        "margin-mobile": "16px",
+                        "container-max": "1200px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["'Bricolage Grotesque'"],
+                        "body-md": ["'Bricolage Grotesque'"],
+                        "label-sm": ["'Bricolage Grotesque'"],
+                        "display-lg": ["'Bricolage Grotesque'"],
+                        "display-lg-mobile": ["'Bricolage Grotesque'"],
+                        "headline-md": ["'Bricolage Grotesque'"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["18px", {"lineHeight": "1.6", "letterSpacing": "0", "fontWeight": "400"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "letterSpacing": "0", "fontWeight": "400"}],
+                        "label-sm": ["13px", {"lineHeight": "1", "letterSpacing": "0.02em", "fontWeight": "600"}],
+                        "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "display-lg-mobile": ["36px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-md": ["24px", {"lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+            vertical-align: middle
+        }
+        .reading-lamp-effect {
+            background: radial-gradient(circle at 50% 30%, rgba(212, 175, 55, 0.08) 0%, rgba(14, 19, 33, 0) 70%)
+        }
+        .glass-card {
+            backdrop-filter: blur(20px);
+            background: rgba(26, 31, 46, 0.7);
+            border: 1px solid rgba(212, 175, 55, 0.1)
+        }
+        .noise-texture {
+            position: fixed;
+            inset: 0;
+            z-index: 50;
+            opacity: 0.02;
+            pointer-events: none;
+            background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuBd19LTP39WNJNXyBLV1GufpvFTPXBCfksepIp46fYCHwfqS3Npe5DCuj0ysE-czLoFe_R5XAxp_CUQjz1Is2tdSLNXOAsuiOG4F5cwM5Q77ZHLKPVHVHy_WbPH5EO0qTH-O6lX4Sb-pltZzlesRTw6w2BGRLuY9i4MbafN_iYioAFmaE2Me7zweMLghtEQb-vOXnP_sZC1Y5L4MkpryL83zm9v9MiXBc9bmLezzm8aPFuOvVwu29HYiIlAQ1ro2d_gB6lu0Yak_SE)
+        }
+        body {
+            font-family: 'Bricolage Grotesque', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md selection:bg-primary-container selection:text-on-primary-container overflow-x-hidden">
+<div class="noise-texture"></div>
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-0 h-full z-40 p-4 bg-surface-container dark:bg-surface-container h-screen w-64 rounded-r-xl border-r border-outline-variant/20 shadow-md">
+<div class="flex flex-col h-full">
+<div class="mb-10 px-4">
+<h1 class="font-display-lg text-display-lg text-primary leading-none">Nocturnal Scholar</h1>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-2">IELTS Archive</p>
+</div>
+<nav class="flex-grow space-y-2">
+<a class="flex items-center gap-3 px-4 py-3 rounded-full text-on-surface-variant hover:bg-surface-variant/50 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-body-md text-body-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-full bg-primary-container text-on-primary-container font-bold" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">menu_book</span>
+<span class="font-body-md text-body-md">Reading</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-full text-on-surface-variant hover:bg-surface-variant/50 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">hearing</span>
+<span class="font-body-md text-body-md">Listening</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-full text-on-surface-variant hover:bg-surface-variant/50 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">edit_note</span>
+<span class="font-body-md text-body-md">Writing</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-full text-on-surface-variant hover:bg-surface-variant/50 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">record_voice_over</span>
+<span class="font-body-md text-body-md">Speaking</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-full text-on-surface-variant hover:bg-surface-variant/50 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">spellcheck</span>
+<span class="font-body-md text-body-md">Grammar</span>
+</a>
+</nav>
+<div class="mt-auto pt-6 border-t border-outline-variant/10">
+<div class="flex items-center gap-3 px-4 py-3 rounded-full text-on-surface-variant hover:bg-surface-variant/30 transition-colors duration-200">
+<div class="w-8 h-8 rounded-full bg-surface-variant overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A portrait of a scholarly individual with glasses, focused and calm, in a dimly lit library filled with old leather-bound books." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBkg2edPh_unbft701UPlFXu2DKC3fIsl1KEQL0GDgdHzuwH8Dqvj6zrDneiUR_HIPU6dD1LRrVDtTHMoyMgVUCS0KuQRUiplOTWKltGDVZGS4n4GXAZHaSjOJ_AvfDi3cG5044ULMGOuXnXD3nSZg1rTpQVHaGvYc-suSFvisYChfJITkHb-l8n2mgASckHxjPy4oDPi3GtJrTKWfNeJYEPyf1MKkkhHqvlQO6bcKbRvkYj8BPUGfRZzlre-fMOLqFaNubae4F0NM"/>
+</div>
+<div class="flex flex-col">
+<span class="text-xs font-bold text-on-surface">Scholar</span>
+<span class="text-[10px]">IELTS Level 8.5</span>
+</div>
+</div>
+</div>
+</div>
+</aside>
+<!-- TopAppBar -->
+<header class="fixed top-0 right-0 left-64 z-30 flex justify-between items-center px-margin-desktop h-20 bg-surface/70 backdrop-blur-xl border-b border-outline-variant/10 shadow-sm">
+<div class="flex items-center gap-6 flex-1">
+<div class="relative w-full max-w-md">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="w-full bg-surface-container-low border-none rounded-full py-2 pl-12 pr-6 text-on-surface font-body-md placeholder:text-on-surface-variant focus:ring-2 focus:ring-primary/30 transition-all outline-none" placeholder="Search archive..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 rounded-full text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-2 rounded-full text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<div class="h-8 w-[1px] bg-outline-variant/30 mx-2"></div>
+<span class="font-label-sm text-label-sm text-primary font-bold uppercase tracking-widest">Archive Status: Online</span>
+</div>
+</header>
+<!-- Main Content -->
+<main class="ml-64 pt-24 pb-12 px-margin-desktop reading-lamp-effect min-h-screen">
+<div class="max-w-container-max mx-auto">
+<!-- Hero Section -->
+<section class="relative mb-12 animate-in fade-in slide-in-from-bottom-4 duration-1000">
+<div class="h-[500px] w-full rounded-xl overflow-hidden relative group">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="A cinematic, high-angle shot of an expansive, modern academic library at night." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC-F7KE2yO28-dVKC8Swni_qAuVZkW0O75WvJHIBBEy7egTcCbITyuCvlEiQPUMsmLUDGmc2XhnXL6GWbcuYhlXzAN19ueMYMq1HqQOivy4KGO6gBuPR4j8ElSyWF_uC0AninZAVNbl-r-3jShHm0HgQo3Bjp-3_NTSzb0t2l4lobKdxfZZtYJRHtcgrA0iYg6Gb2036e4wrrdsQE1nq5XSzD06Q1b5jeNrYyAW1LFr6nW7YpoF_TYneqgB5GMXT9sCc8HH_JgLVhE"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent"></div>
+<div class="absolute bottom-12 left-12 right-12">
+<div class="flex items-center gap-3 mb-6">
+<span class="px-4 py-1.5 rounded-full bg-secondary-container/80 backdrop-blur-md text-on-secondary-container font-label-sm text-label-sm border border-secondary/20">Advanced Reading</span>
+<span class="px-4 py-1.5 rounded-full bg-surface-container-highest/80 backdrop-blur-md text-primary font-label-sm text-label-sm border border-primary/20">15 min read</span>
+</div>
+<h1 class="font-display-lg text-display-lg text-on-surface mb-4 max-w-3xl leading-tight">Understanding Academic English: The Silent Nuance of Global Discourse</h1>
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-sm">calendar_today</span>
+<span class="text-on-surface-variant font-label-sm text-label-sm">October 24, 2024</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-sm">person</span>
+<span class="text-on-surface-variant font-label-sm text-label-sm">Dr. Elias Sterling</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Article Container -->
+<article class="glass-card rounded-xl p-12 lg:p-16 mb-12 shadow-2xl relative">
+<!-- Verified Content Stamp -->
+<div class="absolute -top-6 -right-6 md:right-12 rotate-12 z-10">
+<div class="flex flex-col items-center justify-center w-32 h-32 rounded-full border-4 border-primary/30 bg-surface-container p-2 text-center backdrop-blur-xl shadow-[0_0_20px_rgba(242,202,80,0.1)]">
+<span class="material-symbols-outlined text-primary text-3xl" style="font-variation-settings: 'FILL' 1;">verified</span>
+<span class="font-label-sm text-[10px] text-primary font-black leading-tight mt-1 uppercase tracking-tighter">Verified Content</span>
+<span class="font-label-sm text-[8px] text-on-surface-variant mt-0.5">Archive #772</span>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-16">
+<!-- Sidebar/Abstract -->
+<aside class="lg:col-span-4 space-y-12">
+<div class="space-y-4">
+<h3 class="text-primary font-headline-md text-headline-md border-b border-outline-variant/30 pb-2">Key Themes</h3>
+<ul class="space-y-3">
+<li class="flex items-start gap-3 group">
+<span class="w-1.5 h-1.5 rounded-full bg-primary mt-2 group-hover:scale-150 transition-transform"></span>
+<span class="text-on-surface-variant font-body-md">Lexical precision in scientific context</span>
+</li>
+<li class="flex items-start gap-3 group">
+<span class="w-1.5 h-1.5 rounded-full bg-primary mt-2 group-hover:scale-150 transition-transform"></span>
+<span class="text-on-surface-variant font-body-md">The architecture of complex sentence structures</span>
+</li>
+<li class="flex items-start gap-3 group">
+<span class="w-1.5 h-1.5 rounded-full bg-primary mt-2 group-hover:scale-150 transition-transform"></span>
+<span class="text-on-surface-variant font-body-md">Rhetorical strategies for formal argumentation</span>
+</li>
+</ul>
+</div>
+<div class="p-6 rounded-lg bg-surface-container-low border border-outline-variant/20">
+<span class="material-symbols-outlined text-secondary mb-3">lightbulb</span>
+<h4 class="text-on-surface font-bold font-body-md mb-2">Scholar's Note</h4>
+<p class="text-sm text-on-surface-variant font-body-md italic leading-relaxed">
+                            "Academic English is not about complexity for complexity's sake, but about clarity in the abstract."
+                        </p>
+</div>
+<!-- Mini Reading Progress -->
+<div class="space-y-2">
+<div class="flex justify-between font-label-sm text-[10px] uppercase text-on-surface-variant">
+<span>Reading Progress</span>
+<span class="text-primary">45%</span>
+</div>
+<div class="h-1 w-full bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-primary shadow-[0_0_10px_rgba(242,202,80,0.5)] w-[45%]"></div>
+</div>
+</div>
+</aside>
+<!-- Article Content -->
+<div class="lg:col-span-8 font-body-lg text-body-lg space-y-8 leading-relaxed text-on-surface/90">
+<p class="first-letter:text-5xl first-letter:font-display-lg first-letter:text-primary first-letter:float-left first-letter:mr-4 first-letter:mt-1">
+                        Academic English serves as the lingua franca of the modern intellectual world. Unlike the casual colloquialisms of daily interaction, the academic register requires a deliberate adherence to formal structures, precise vocabulary, and a neutral tone that prioritizes the message over the messenger. 
+                    </p>
+<h2 class="text-primary font-headline-md text-headline-md pt-4">The Pillar of Precision</h2>
+<p>
+                        In the realm of high-stakes testing, such as the IELTS Academic module, precision is paramount. This goes beyond simple spelling; it encompasses the "lexical fitness" of every chosen word. Using "significant increase" instead of "big jump" signals a transition from the observational to the analytical.
+                    </p>
+<blockquote class="border-l-4 border-primary pl-8 py-4 my-10 bg-surface-variant/20 rounded-r-lg italic text-on-surface font-body-lg">
+                        "The transition from general fluency to academic proficiency is marked by the ability to handle ambiguity through precise linguistic selection."
+                    </blockquote>
+<h2 class="text-primary font-headline-md text-headline-md pt-4">Complexity and Cohesion</h2>
+<p>
+                        Many students mistake academic writing for a mandate to produce interminable sentences. On the contrary, the hallmark of elite academic English is the sophisticated use of cohesive devices—conjunctions, pronouns, and transition markers—that guide the reader through complex logical leaps without friction.
+                    </p>
+<div class="grid grid-cols-2 gap-4 my-8">
+<div class="p-4 rounded-lg border border-outline-variant/30 bg-surface-dim">
+<span class="block font-label-sm text-[10px] uppercase text-secondary-fixed mb-1">Avoid</span>
+<span class="text-on-surface-variant font-body-md line-through">"The results were really good."</span>
+</div>
+<div class="p-4 rounded-lg border border-primary/20 bg-primary/5">
+<span class="block font-label-sm text-[10px] uppercase text-primary mb-1">Preferred</span>
+<span class="text-on-surface font-body-md font-bold">"The results yielded statistically significant improvements."</span>
+</div>
+</div>
+<p>
+                        As we delve deeper into the IELTS Reading Archive, we notice a recurring pattern: the most challenging texts are those that weave multiple perspectives together using a high degree of nominalization. Transforming verbs into nouns—from "the way humans interact" to "human interaction"—allows for more dense and efficient information sharing.
+                    </p>
+</div>
+</div>
+<!-- Article Footer Actions -->
+<div class="mt-16 pt-8 border-t border-outline-variant/10 flex flex-wrap justify-between items-center gap-6">
+<div class="flex gap-4">
+<button class="px-8 py-3 rounded-full bg-primary text-on-primary font-body-md font-bold transition-transform active:scale-95 hover:shadow-[0_0_20px_rgba(242,202,80,0.3)] flex items-center gap-2">
+<span class="material-symbols-outlined">download</span>
+                        Save to Archive
+                    </button>
+<button class="px-8 py-3 rounded-full border border-secondary text-secondary font-body-md font-bold transition-all hover:bg-secondary/10 active:scale-95 flex items-center gap-2">
+<span class="material-symbols-outlined">print</span>
+                        Print for Review
+                    </button>
+</div>
+<div class="flex items-center gap-4">
+<span class="text-on-surface-variant font-body-md text-sm">Share Knowledge:</span>
+<div class="flex gap-2">
+<button class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center text-on-surface hover:text-primary transition-colors border border-outline-variant/20">
+<span class="material-symbols-outlined text-sm">share</span>
+</button>
+<button class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center text-on-surface hover:text-primary transition-colors border border-outline-variant/20">
+<span class="material-symbols-outlined text-sm">bookmark</span>
+</button>
+</div>
+</div>
+</div>
+</article>
+<!-- Related Articles Bento Grid -->
+<section class="mt-12">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-8">Related Scholarly Works</h3>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="glass-card p-6 rounded-lg group cursor-pointer hover:border-primary/40 transition-all duration-300">
+<div class="h-32 w-full rounded-md bg-surface-variant mb-4 overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="A macro photograph of the tip of a gold fountain pen." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBLEmM_3qJsR3yEksi6edEkivLFxOfy_3SErGsSGwnGSJX2M4VCfHhQLHyW3-G0dKxp81JHAzHhklvvOZrmh5OuclV4hCgcEwaouAQErPzNXDERPiRVcDSkNW5XbccnVziVMaJ07ifrSmTSAFofIT0iiZy_vJLod367Ve1Spo89obXX6zyIPQFHvaYtjqpDpDBPw6rvk6_IQqVtKEZVEYj1lMWR9s29DZtw7Qm_3HBF8UNP_-HMbYXIfzHdcC6w5Wft-IRw6YJMFyE"/>
+</div>
+<h4 class="text-primary font-body-md font-bold mb-2">Mastering the Abstract</h4>
+<p class="text-sm text-on-surface-variant font-body-md line-clamp-2">How to condense complex research into a single, punchy paragraph.</p>
+</div>
+<div class="glass-card p-6 rounded-lg group cursor-pointer hover:border-primary/40 transition-all duration-300">
+<div class="h-32 w-full rounded-md bg-surface-variant mb-4 overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="Digital representation of human voice as data waves." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD7oFOg_khVhNSvvFRCxggse9cMfY9H9w2hWxs35-OdFLX2cmzkviB97d-6HKyQTNympT72ExwoQRHXatNSSHEqX2jIRC2c455DdJp-yc6Tu7V5o2Q_NLrvBAyfZLQ9_TQUYAUvYb1rTJ-1nAxIWaRfknbb8waf3j_rwaYWoMT0Z23L9CRqFxsNzNwmP5fvfhL6y591ByhwGrwvnW8eN3tiu8Wk3iRlio7IZiTxN6OytUk_OTyzsAtgTr0_3Loh5crdTBYS5bIFEnw"/>
+</div>
+<h4 class="text-primary font-body-md font-bold mb-2">Speaking with Authority</h4>
+<p class="text-sm text-on-surface-variant font-body-md line-clamp-2">Strategies for the IELTS speaking test using academic vocabulary naturally.</p>
+</div>
+<div class="glass-card p-6 rounded-lg group cursor-pointer hover:border-primary/40 transition-all duration-300">
+<div class="h-32 w-full rounded-md bg-surface-variant mb-4 overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="An antique brass compass on a map." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBusdUkzAsIWMkJstxZ7nMbNnJmtqn9OYSZshiWzUXNUJrfyK0Dj4wEO8AWnIQhAetcnLddmCmgP7V-rTNdb22WYWx6t_-nSHzIT3eDS_tvvES5R8kLG5gbGQmcvpGN4t2eGPrkzNnyrVU5B9g6OosoQ0mDyIathinjV-WLAszqnZ9A_vbe7YywF5wHDL2SimnzGOzPp59efr6CWL3QAr4O-6DfEFUOiu7W76ufyrkq5IG8nbk1dz27QeqeY2Z4eWSrBKpeoDbzn70"/>
+</div>
+<h4 class="text-primary font-body-md font-bold mb-2">Navigation Markers</h4>
+<p class="text-sm text-on-surface-variant font-body-md line-clamp-2">Understanding signposting language in long academic listening passages.</p>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- Footer -->
+<footer class="ml-64 w-[calc(100%-16rem)] p-8 flex justify-between items-center bg-surface-container-lowest dark:bg-surface-container-lowest border-t border-outline-variant/10">
+<div class="flex items-center gap-6">
+<span class="font-label-sm text-label-sm text-on-surface-variant">© 2024 Nocturnal Scholar Archive. All Rights Reserved.</span>
+</div>
+<nav class="flex gap-8">
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-secondary-fixed transition-colors underline-offset-4" href="#">Archive Status</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-secondary-fixed transition-colors underline-offset-4" href="#">Terms of Service</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-secondary-fixed transition-colors underline-offset-4" href="#">Privacy Policy</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-secondary-fixed transition-colors underline-offset-4" href="#">Institutional Access</a>
+</nav>
+</footer>
+<script>
+    // Micro-interaction for the Reading Lamp Effect
+    document.addEventListener('mousemove', (e) => {
+        const lamp = document.querySelector('.reading-lamp-effect');
+        if (lamp) {
+            const x = (e.clientX / window.innerWidth) * 100;
+            const y = (e.clientY / window.innerHeight) * 100;
+            lamp.style.background = `radial-gradient(circle at ${x}% ${y}%, rgba(212, 175, 55, 0.08) 0%, rgba(14, 19, 33, 0) 70%)`;
+        }
+    });
+
+    // Simple scroll progress indicator
+    window.onscroll = function() {
+        let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+        let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        let scrolled = (winScroll / height) * 100;
+        const progressBar = document.querySelector('.h-full.bg-primary');
+        if(progressBar) {
+            progressBar.style.width = scrolled + "%";
+            const progressText = document.querySelector('.text-primary.font-label-sm');
+            if (progressText) progressText.innerText = Math.round(scrolled) + "%";
+        }
+    };
+</script>
+</body></html>
